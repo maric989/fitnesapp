@@ -12,5 +12,7 @@ const mix = require('laravel-mix');
  */
 
 mix.sass('resources/sass/app.scss', 'public/css').version();
+mix.sass('resources/sass/general/form.scss', 'public/css/general').version();
+mix.sass('resources/sass/auth/auth.scss', 'public/css/auth').version();
 
 mix.copy('resources/images/', 'public/images/');

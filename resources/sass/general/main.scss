@@ -121,6 +121,10 @@ select {
     flex: 50%;
 }
 
+.flex-column {
+    flex-direction: column;
+}
+
 .block {
     display: block;
 }
@@ -155,4 +159,8 @@ select {
 
 .absolute {
     position: absolute;
+}
+
+.fixed {
+    position: fixed;
 }
