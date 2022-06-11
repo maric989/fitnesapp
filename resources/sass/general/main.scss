@@ -1,11 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import "font";
 
 body {
     padding: 0;
     margin: 0;
     background: #fff;
     font-size: 14px;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Gilroy', sans-serif;
 }
 
 a {
@@ -16,25 +17,25 @@ h1 {
     color: #111827;
     font-size: 24px;
     font-weight: bold;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Gilroy', sans-serif;
     padding: 0;
     margin: 0;
 }
 
 h2 {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Gilroy', sans-serif;
     padding: 0;
     margin: 0;
 }
 
 h3 {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Gilroy', sans-serif;
     padding: 0;
     margin: 0;
 }
 
 h4 {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Gilroy', sans-serif;
     padding: 0;
     margin: 0;
 }
@@ -44,7 +45,7 @@ input {
 }
 
 button {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Gilroy', sans-serif;
 }
 
 textarea {

@@ -1,0 +1,86 @@
+@import "resources/sass/vars/color";
+
+body {
+    background: #F3F5FA;
+}
+
+.admin-container {
+    .admin-left-menu {
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: 281px;
+        background: $mainColor;
+        overflow-y: auto;
+        .admin-left-menu-logo {
+            padding: 52px 0 0 37px;
+        }
+        .admin-left-menu-options {
+            padding-top: 80px;
+            .admin-left-menu-option {
+                font-size: 18px;
+                color: $adminMenuColor;
+                height: 70px;
+                transition: 200ms all;
+                background: url("/images/left-menu-active.png") no-repeat left -15px center;
+                .menu-icon {
+                    width: 30px;
+                    height: 70px;
+                    left: 40px;
+                    &.home-icon {
+                        background: url("/images/home-icon.png") no-repeat center;
+                    }
+                    &.programs-icon {
+                        background: url("/images/programs-icon.png") no-repeat center;
+                    }
+                    &.coaches-icon {
+                        background: url("/images/coaches-icon.png") no-repeat center;
+                    }
+                    &.transactions-icon {
+                        background: url("/images/transactions-icon.png") no-repeat center;
+                    }
+                    &.users-icon {
+                        background: url("/images/users-icon.png") no-repeat center;
+                    }
+                    &.settings-icon {
+                        background: url("/images/settings-icon.png") no-repeat center;
+                    }
+                    &.active-icon {
+                        opacity: 0;
+                        &.home-icon {
+                            background: url("/images/home-icon-active.png") no-repeat center;
+                        }
+                        &.programs-icon {
+                            background: url("/images/programs-icon-active.png") no-repeat center;
+                        }
+                        &.coaches-icon {
+                            background: url("/images/coaches-icon-active.png") no-repeat center;
+                        }
+                        &.transactions-icon {
+                            background: url("/images/transactions-icon-active.png") no-repeat center;
+                        }
+                        &.users-icon {
+                            background: url("/images/users-icon-active.png") no-repeat center;
+                        }
+                        &.settings-icon {
+                            background: url("/images/settings-icon-active.png") no-repeat center;
+                        }
+                    }
+                }
+                .text {
+                    padding-left: 90px;
+                }
+                &.active, &:hover {
+                    background: url("/images/left-menu-active.png") no-repeat left 0 center;
+                    color: $mainGreen;
+                    .menu-icon {
+                        opacity: 0;
+                        &.active-icon {
+                            opacity: 1;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
