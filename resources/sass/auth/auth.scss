@@ -1,5 +1,7 @@
+@import "resources/sass/vars/color";
+
 .auth-container {
-    background: #2D2B27;
+    background: $mainColor;
     overflow-y: auto;
     .auth-content {
         padding: 36px 126px 36px 60px;
@@ -21,6 +23,7 @@
             border-radius: 15px;
             padding: 60px 30px;
             font-size: 14px;
+            font-family: 'Inter', sans-serif;
             a {
                 color: #B6B6B6;
             }
