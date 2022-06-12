@@ -1,16 +1,16 @@
 <div>
     <div class="admin-left-menu-logo">
         <a href="/admin/dashboard">
-            <img src="/images/admin-logo.png" alt="My Aura" />
+            <img src="{{ asset('/images/admin-logo.png') }}" alt="My Aura" />
         </a>
     </div>
     <div class="admin-left-menu-options">
-        <a href="/admin/dashboard" class="admin-left-menu-option flex v-align-center relative active">
+        <a href="/admin/dashboard" class="admin-left-menu-option flex v-align-center relative {{ Request::is('admin/dashboard') ? 'active' : '' }}">
             <div class="menu-icon home-icon absolute"></div>
             <div class="menu-icon home-icon active-icon absolute"></div>
             <div class="text">Dashboard</div>
         </a>
-        <a href="/admin" class="admin-left-menu-option flex v-align-center relative">
+        <a href="{{ route('admin.program.paginate') }}" class="admin-left-menu-option flex v-align-center relative {{ Request::is('admin/programs') || Request::is('admin/programs/*') ? 'active' : '' }}">
             <div class="menu-icon programs-icon absolute"></div>
             <div class="menu-icon programs-icon active-icon absolute"></div>
             <div class="text">Programs</div>

@@ -9,16 +9,31 @@ use App\Models\Focus;
 use App\Models\Intensity;
 use App\Models\Program;
 use App\Services\File\FileService;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cookie;
 
 class ProgramController extends Controller
 {
+    public function paginatePrograms(Request $request)
+    {
+        $view = 'card';
+        if (isset($request->view_mode)) {
+            Cookie::queue('view_mode', $request->view_mode, 60*60*30);
+            $view = $request->view_mode;
+        } else if ($request->cookie('view_mode')) {
+            $view = $request->cookie('view_mode');
+        }
+
+        return view('admin.program.paginate', ['programs' => Program::paginate(), 'view' => $view]);
+    }
+
     public function createProgram()
     {
         $focuses = Focus::all();
         $intensities = Intensity::all();
         $difficulties = Difficulty::all();
 
-        return view('programs.create')->with([
+        return view('admin.program.manage')->with([
             'focuses' => $focuses,
             'intensities' => $intensities,
             'difficulties' => $difficulties

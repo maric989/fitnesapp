@@ -83,4 +83,112 @@ body {
             }
         }
     }
+    .admin-body {
+        padding: 0 0 0 281px;
+        .admin-content {
+            padding: 58px 75px 68px 72px;
+        }
+    }
+    .admin-title-container {
+        padding-top: 70px;
+    }
+    .admin-title {
+        color: #2B2827;
+        font-size: 40px;
+    }
+    .admin-title-back-link {
+        padding-bottom: 25px;
+        a {
+            color: $mainGreen;
+            font-size: 14px;
+            padding-left: 15px;
+            background: url("/images/admin-back.png") no-repeat left center;
+        }
+    }
+    .admin-new-item {
+        color: $mainGreen;
+        font-size: 14px;
+        height: 40px;
+        border-radius: 20px;
+        border: 1px solid $mainGreen;
+        font-family: 'Inter', sans-serif;
+        transition: 200ms all;
+        padding: 0 15px;
+        &:hover {
+            color: $mainGreenHover;
+            border: 1px solid $mainGreenHover;
+        }
+    }
+    .admin-view-selector-container {
+        padding-right: 40px;
+        .admin-view-selector {
+            background: #fff;
+            height: 40px;
+            border-radius: 7px;
+
+            .admin-view-selector-item-container {
+                width: 30px;
+                height: 30px;
+                margin: 5px 8px 0 8px;
+
+                .admin-view-selector-item {
+                    width: 30px;
+                    height: 30px;
+
+                    &.admin-view-selector-list {
+                        background: url("/images/view-list.png") no-repeat;
+
+                        &.active-list {
+                            background: url("/images/view-list-active.png") no-repeat;
+                            opacity: 0;
+                        }
+                    }
+
+                    &.admin-view-selector-card {
+                        background: url("/images/view-card.png") no-repeat;
+
+                        &.active-card {
+                            background: url("/images/view-card-active.png") no-repeat;
+                            opacity: 0;
+                        }
+                    }
+                }
+                &:hover, &.active {
+                    .admin-view-selector-list {
+                        opacity: 0;
+                        &.active-list {
+                            opacity: 1;
+                        }
+                    }
+                    .admin-view-selector-card {
+                        opacity: 0;
+                        &.active-card {
+                            opacity: 1;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .admin-header-bar {
+        .admin-header-right {
+            .admin-avatar {
+                padding-left: 40px;
+            }
+        }
+        .admin-search-bar {
+            width: 80%;
+            .admin-search-input {
+                border: 1px solid #DBD8FC;
+                border-radius: 10px;
+                font-family: 'Gilroy', sans-serif;
+                height: 62px;
+                width: 100%;
+                font-size: 15px;
+                color: #7C8DB5;
+                background: #fff url("/images/admin-search.png") no-repeat left 28px center;
+                padding: 0 30px 0 67px;
+            }
+        }
+    }
 }

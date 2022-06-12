@@ -1,19 +1,31 @@
 @import "resources/sass/vars/color";
 
 .button {
-    border: 0;
+    border: 2px solid $mainGreen;
     background: $mainGreen;
     border-radius: 7px;
     color: #fff;
     font-size: 16px;
     font-weight: 700;
-    height: 60px;
+    height: 56px;
     padding: 0 50px;
     text-align: center;
     transition: 200ms all;
     cursor: pointer;
     text-transform: uppercase;
+    &.link-button {
+        height: 52px;
+    }
     &:hover {
         background: $mainGreenHover;
+        border: 2px solid $mainGreenHover;
+    }
+    &.cancel {
+        background: #fff;
+        color: $mainGreen;
+        &:hover {
+            background: #fff;
+            color: $mainGreenHover;
+        }
     }
 }

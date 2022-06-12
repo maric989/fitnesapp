@@ -1,0 +1,38 @@
+@import "resources/sass/general/form";
+@import "resources/sass/general/button";
+
+.admin-manage-form-container {
+    padding-top: 30px;
+    .admin-manage-form {
+        background: #fff;
+        border: 1px solid #DBD8FC;
+        border-radius: 10px;
+        padding: 23px 70px 40px 70px;
+        .admin-manage-form-side {
+            width: calc(50% - 15px);
+        }
+    }
+}
+
+.form-label {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.form-element {
+    textarea {
+        &.admin-big-textarea {
+            height: 350px;
+        }
+        &.admin-small-textarea {
+            height: 55px;
+        }
+    }
+}
+
+.form-buttons {
+    padding-top: 50px;
+    .form-button-content {
+        padding: 0 15px;
+    }
+}

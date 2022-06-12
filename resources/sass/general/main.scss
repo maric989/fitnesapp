@@ -138,6 +138,10 @@ select {
     font-weight: bold;
 }
 
+.semi-bold {
+    font-weight: 600;
+}
+
 .space-between {
     justify-content: space-between;
 }
@@ -164,4 +168,8 @@ select {
 
 .fixed {
     position: fixed;
+}
+
+.uppercase {
+    text-transform: uppercase;
 }

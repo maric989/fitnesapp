@@ -8,7 +8,9 @@
             @include('admin.structure.left-menu')
         </div>
         <div class="admin-body">
-            @yield('admin-container')
+            <div class="admin-content">
+                @yield('admin-container')
+            </div>
         </div>
     </div>
 @endsection

@@ -23,6 +23,7 @@
         width: calc(100% - 32px);
         font-size: 14px;
         padding: 0 15px;
+        background: #fff;
         &:focus {
             outline: none
         }
@@ -37,7 +38,7 @@
         margin: 0;
     }
     select {
-        height: 50px;
+        height: 47px;
         width: 100%;
     }
     textarea {
