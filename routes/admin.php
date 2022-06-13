@@ -13,6 +13,8 @@ Route::middleware(['isAdmin', 'auth'])->group(function () {
             Route::post('/',[ProgramController::class, 'storeProgram'])->name('admin.program.store');
             Route::prefix('{program_id}')->group(function () {
                 Route::get('/',[ProgramController::class, 'getProgram'])->name('admin.program.get.single');
+                Route::get('/edit',[ProgramController::class, 'editProgram'])->name('admin.program.edit.single');
+                Route::put('/',[ProgramController::class, 'updateProgram'])->name('admin.program.update.single');
             });
         });
     });

@@ -34,11 +34,6 @@ class Program extends Model
         return $this->hasOne(File::class, 'id', 'cover_id');
     }
 
-    /**
-     * @param  \Illuminate\Database\Eloquent\Builder  $query
-     * @param  integer  $id
-     * @return \Illuminate\Database\Eloquent\Builder
-     */
     public function scopeWhereId($query, $id)
     {
         return $query->where('id', $id);

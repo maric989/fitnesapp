@@ -61,10 +61,23 @@ class ProgramController extends Controller
         return redirect()->route('admin.program.get.single', $program->id);
     }
 
-    public function getProgram($programId)
+    public function getProgram(int $programId)
+    {
+        $program = Program::whereId($programId)->programData()->first();
+        //lessions
+        
+        // single program blade
+    }
+
+    public function editProgram(int $programId)
     {
         $program = Program::whereId($programId)->programData()->first();
 
-        dd($program);
+        // edit program blade
+    }
+
+    public function updateProgram()
+    {
+        
     }
 }
