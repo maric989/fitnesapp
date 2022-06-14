@@ -9,8 +9,9 @@ Route::middleware(['isAdmin', 'auth'])->group(function () {
             return view('admin.dashboard.dashboard');
         });
         Route::prefix('programs')->group(function () {
-            Route::get('/',[ProgramController::class, 'createProgram']);
+            Route::get('/',[ProgramController::class, 'createProgram'])->name('admin.program.store.get');
             Route::post('/',[ProgramController::class, 'storeProgram'])->name('admin.program.store');
+            Route::get('/paginate',[ProgramController::class, 'paginatePrograms'])->name('admin.program.paginate');
             Route::prefix('{program_id}')->group(function () {
                 Route::get('/',[ProgramController::class, 'getProgram'])->name('admin.program.get.single');
                 Route::get('/edit',[ProgramController::class, 'editProgram'])->name('admin.program.edit.single');

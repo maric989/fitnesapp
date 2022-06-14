@@ -8,6 +8,7 @@
 
         <link rel="stylesheet" href="{{ mix('/css/app.css') }}" />
         @yield('head-css')
+        <script src="{{ mix('/js/jquery.js') }}"></script>
         @yield('head-js')
     </head>
     <body>

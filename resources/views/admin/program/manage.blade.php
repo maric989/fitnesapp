@@ -30,8 +30,11 @@
                             <input name="trailer_id" id="trailer_id" placeholder="Insert program title" />
                         </div>
                         <label for="duration" class="form-label block">Duration (number of days)</label>
-                        <div class="form-element">
-                            <input name="duration" id="duration" />
+                        <div class="form-element form-duration-container" data-current-value="1" data-field-id="duration" data-handle-id="duration-handle">
+                            <div class="form-duration">
+                                <div class="ui-slider-handle form-duration-handle" id="duration-handle"></div>
+                            </div>
+                            <input name="duration" id="duration" value="1" />
                         </div>
                         <label for="difficulty_id" class="form-label block">Difficulty</label>
                         <div class="form-element">
@@ -59,7 +62,12 @@
                         </div>
                         <label for="cover_image" class="form-label block">Video cover image (16:9 image ratio)</label>
                         <div class="form-element">
-                            <input type="file" name="cover_image" id="cover_image" />
+                            <div class="upload-file-container flex v-align-center h-align-center pointer">
+                                <input type="file" name="cover_image" id="cover_image" class="input-file" />
+                                <div class="upload-file-content">
+                                    Choose a file
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

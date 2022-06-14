@@ -36,3 +36,52 @@
         padding: 0 15px;
     }
 }
+
+.upload-file-container {
+    border: 1px dashed #D8D8D8;
+    border-radius: 5px;
+    height: 232px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    input {
+        display: none;
+    }
+    .upload-file-content {
+        background: url("/images/upload-file-icon.png") no-repeat top center;
+        padding-top: 30px;
+        color: #9A9A9A;
+        font-size: 14px;
+    }
+}
+
+.form-duration-container {
+    padding-top: 30px;
+    padding-bottom: 20px;
+}
+
+.ui-widget.ui-widget-content.form-duration {
+    background: #EBEEF6;
+    border: 0;
+    height: 8px;
+    border-radius: 4px;
+    .form-duration-handle {
+        width: 19px;
+        height: 19px;
+        border: 5px solid $mainGreen;
+        top: -9px;
+        background: #EBEEF6;
+        border-radius: 50%;
+        outline: none;
+        span {
+            position: absolute;
+            top: -23px;
+            color: $mainGreen;
+            font-size: 14px;
+            font-weight: 600;
+            width: 55px;
+            text-align: center;
+            left: -18px;
+        }
+    }
+}

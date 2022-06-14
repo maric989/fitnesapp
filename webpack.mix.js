@@ -11,12 +11,17 @@ const mix = require('laravel-mix');
  |
  */
 
+mix.scripts('resources/js/jquery-3.6.0.min.js', 'public/js/jquery.js').version();
+mix.scripts('resources/js/jquery-ui.js', 'public/js/jquery-ui.js').version();
+mix.scripts('resources/js/admin.js', 'public/js/admin.js').version();
+
 mix.sass('resources/sass/app.scss', 'public/css').version();
 mix.sass('resources/sass/general/form.scss', 'public/css/general').version();
 mix.sass('resources/sass/auth/auth.scss', 'public/css/auth').version();
 
 mix.sass('resources/sass/admin/general.scss', 'public/css/admin').version();
 mix.sass('resources/sass/admin/manage-form.scss', 'public/css/admin').version();
+mix.css('resources/css/jquery-ui.css', 'public/css/general/jquery-ui.css').version();
 
 mix.copy('resources/images/', 'public/images/');
 mix.copy('resources/fonts/', 'public/fonts/');
