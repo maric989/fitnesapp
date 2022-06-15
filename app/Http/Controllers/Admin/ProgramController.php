@@ -8,6 +8,7 @@ use App\Models\Difficulty;
 use App\Models\Focus;
 use App\Models\Intensity;
 use App\Models\Program;
+use App\Models\ProgramLessonDay;
 use App\Services\File\FileService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cookie;
@@ -58,6 +59,15 @@ class ProgramController extends Controller
             'cover_id' => $coverImage->id
         ]);
 
+        $programDays = [];
+        for ($i = 1; $i <= $request->duration; $i++) {
+            $programDays[] = [
+                'program_id' => $program->id,
+                'day' => $i
+            ];
+        }
+        ProgramLessonDay::insert($programDays);
+
         return redirect()->route('admin.program.get.single', $program->id);
     }
 
@@ -65,7 +75,7 @@ class ProgramController extends Controller
     {
         $program = Program::whereId($programId)->programData()->first();
         //lessions
-        
+
         // single program blade
     }
 
@@ -78,6 +88,6 @@ class ProgramController extends Controller
 
     public function updateProgram()
     {
-        
+
     }
 }

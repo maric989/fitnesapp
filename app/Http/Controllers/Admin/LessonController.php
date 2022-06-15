@@ -8,6 +8,7 @@ use App\Models\Difficulty;
 use App\Models\Intensity;
 use App\Models\Lesson;
 use App\Models\Program;
+use App\Models\ProgramLessonDay;
 use App\Services\File\FileService;
 
 class LessonController extends Controller
@@ -17,7 +18,7 @@ class LessonController extends Controller
         $program = Program::where('id', $programId)->first();
         $intensities = Intensity::all();
         $difficulties = Difficulty::all();
-        $freeDays = [1,2,3,4,5];
+        $freeDays = ProgramLessonDay::programFreeDays($programId)->pluck('day')->toArray();
 
         return view('lesson.create')->with([
             'intensities' => $intensities,
@@ -43,7 +44,8 @@ class LessonController extends Controller
         $lesson->update([
             'cover_image_id' => $coverImage->id
         ]);
-
-
+        ProgramLessonDay::where('program_id', $programId)->where('day', $request->day)->update([
+            'lesson_id' => $lesson->id
+        ]);
     }
 }
