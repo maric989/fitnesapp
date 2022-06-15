@@ -42,7 +42,7 @@ class ProgramStoreRequest extends FormRequest
             'short_description' => ['nullable'],
             'full_description' => ['required'],
             'duration' => ['required'],
-            'trailer_id' => ['required'],
+            'trailer_id' => ['required', 'string'],
             'cover_image' => ['required','mimes:jpg,jpeg','max:2048'],
         ];
     }

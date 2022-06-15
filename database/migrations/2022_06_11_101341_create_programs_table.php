@@ -18,8 +18,7 @@ class CreateProgramsTable extends Migration
             $table->string('title');
             $table->text('short_description')->nullable();
             $table->text('full_description');
-            $table->unsignedBigInteger('video_id')->nullable();
-            $table->unsignedBigInteger('trailer_id')->nullable();
+            $table->string('trailer_id')->nullable();
             $table->integer('duration');
             $table->unsignedBigInteger('cover_id')->nullable();
             $table->timestamps();
