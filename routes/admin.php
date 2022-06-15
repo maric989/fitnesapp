@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\LessonController;
 use App\Http\Controllers\Admin\ProgramController;
 use Illuminate\Support\Facades\Route;
 
@@ -16,6 +17,10 @@ Route::middleware(['isAdmin', 'auth'])->group(function () {
                 Route::get('/',[ProgramController::class, 'getProgram'])->name('admin.program.get.single');
                 Route::get('/edit',[ProgramController::class, 'editProgram'])->name('admin.program.edit.single');
                 Route::put('/',[ProgramController::class, 'updateProgram'])->name('admin.program.update.single');
+                Route::prefix('lesson')->group(function () {
+                    Route::get('/', [LessonController::class, 'createLesson'])->name('admin.lesson.create');
+                    Route::post('/', [LessonController::class, 'storeLesson'])->name('admin.lesson.store');
+                });
             });
         });
     });
