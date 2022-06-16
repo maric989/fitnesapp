@@ -1,0 +1,18 @@
+@import "resources/sass/general/data-grid";
+
+.program-list-image-column {
+    width: 80px;
+}
+
+.program-list-image {
+    width: 57px;
+    height: 57px;
+    border-radius: 8px;
+    background-size: auto 100%;
+    background-position: center;
+}
+
+.program-list-link {
+    color: #838690;
+    font-size: 16px;
+}

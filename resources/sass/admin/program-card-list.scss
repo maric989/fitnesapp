@@ -1,0 +1,54 @@
+@import "resources/sass/vars/color";
+
+.program-card {
+    width: calc(50% - 16px);
+    margin-top: 15px;
+    .program-image {
+        border-radius: 15px;
+    }
+    color: #fff;
+    .program-card-overlay {
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(180deg, rgba(45, 43, 39, 0) 0%, #2D2B27 100%);
+        border-radius: 15px;
+    }
+    .program-data-top {
+        top: 30px;
+        right: 40px;
+        font-size: 14px;
+        .program-data-duration {
+            background: url("/images/timer-icon.png") no-repeat left center;
+            padding: 0 18px 0 25px;
+        }
+        .program-data-level {
+            background: url("/images/level-icon.png") no-repeat left center;
+            padding-left: 25px;
+        }
+    }
+    .program-data-bottom {
+        bottom: 30px;
+        left: 40px;
+        width: 70%;
+        .program-data-title {
+            font-size: 24px;
+        }
+        .program-data-description {
+            font-size: 14px;
+            padding-top: 12px;
+        }
+        .program-additional-info {
+            padding-top: 22px;
+            .program-additional-info-item {
+                font-size: 10px;
+                background: $mainGreen;
+                padding: 0 12px;
+                border-radius: 9px;
+                height: 18px;
+                margin-right: 10px;
+            }
+        }
+    }
+}

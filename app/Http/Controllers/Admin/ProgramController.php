@@ -15,6 +15,8 @@ use Illuminate\Support\Facades\Cookie;
 
 class ProgramController extends Controller
 {
+    const PROGRAMS_PER_PAGE_ADMIN = 10;
+
     public function paginatePrograms(Request $request)
     {
         $view = 'card';
@@ -25,7 +27,7 @@ class ProgramController extends Controller
             $view = $request->cookie('view_mode');
         }
 
-        return view('admin.program.paginate', ['programs' => Program::paginate(), 'view' => $view]);
+        return view('admin.program.paginate', ['programs' => Program::programData()->paginate(self::PROGRAMS_PER_PAGE_ADMIN), 'view' => $view]);
     }
 
     public function createProgram()
@@ -73,10 +75,7 @@ class ProgramController extends Controller
 
     public function getProgram(int $programId)
     {
-        $program = Program::whereId($programId)->programData()->first();
-        //lessions
-
-        // single program blade
+        return view('admin.program.view', ['program' => Program::whereId($programId)->programData()->first()]);
     }
 
     public function editProgram(int $programId)

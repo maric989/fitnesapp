@@ -1,0 +1,25 @@
+@import "resources/sass/vars/color";
+
+.paginator {
+    padding-top: 35px;
+    font-size: 14px;
+    font-family: 'Inter', sans-serif;
+    .element {
+        padding-left: 10px;
+        span, a {
+            color: #1F1A1A;
+            border: 1px solid #D8D8D8;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            &.disable-paginator {
+                color: #D8D8D8;
+                border: 1px solid #D8D8D8;
+            }
+            &.active-paginator {
+                color: $mainGreen;
+                border: 1px solid $mainGreen;
+            }
+        }
+    }
+}

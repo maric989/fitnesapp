@@ -82,6 +82,10 @@ select {
     display: table-cell;
 }
 
+.v-align-middle {
+    vertical-align: middle;
+}
+
 .center {
     text-align: center;
 }
@@ -142,6 +146,10 @@ select {
     font-weight: 600;
 }
 
+.font-medium-weight {
+    font-weight: 500;
+}
+
 .space-between {
     justify-content: space-between;
 }
@@ -152,6 +160,10 @@ select {
 
 .h-align-center {
     justify-content: center;
+}
+
+.h-align-right {
+    justify-content: right;
 }
 
 .main-content {
@@ -172,4 +184,12 @@ select {
 
 .uppercase {
     text-transform: uppercase;
+}
+
+.error-message {
+    margin: 5px;
+    border: 1px solid #D63301;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 13px;
 }
