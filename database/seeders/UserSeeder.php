@@ -29,5 +29,15 @@ class UserSeeder extends Seeder
             'country_id' => $ee->id
         ]);
         $admin->assignRole('admin');
+
+        $admin = User::create([
+            'first_name' => 'Sven',
+            'last_name' => 'Playbeech',
+            'gender' => UserGenderEnum::MALE,
+            'email' => 'sven@playbeech.com',
+            'password' => Hash::make('secret'),
+            'country_id' => $ee->id
+        ]);
+        $admin->assignRole('admin');
     }
 }
