@@ -95,6 +95,9 @@ body {
     .admin-title {
         color: #2B2827;
         font-size: 40px;
+        &.white {
+            color: #fff;
+        }
     }
     .admin-title-back-link {
         padding-bottom: 25px;
@@ -103,6 +106,28 @@ body {
             font-size: 14px;
             padding-left: 15px;
             background: url("/images/admin-back.png") no-repeat left center;
+        }
+    }
+    .admin-title-tree-dots {
+        background: url("/images/vertical-dots-white.png") no-repeat center;
+        width: 60px;
+        .admin-title-menu {
+            left: 60px;
+            background: #fff;
+            width: 130px;
+            a {
+                color: #1F1A1A;
+                font-size: 16px;
+                padding: 8px 10px 8px 20px;
+                &:hover {
+                    background: #EBEEF6;
+                }
+            }
+        }
+        &:hover {
+            .admin-title-menu {
+                display: block;
+            }
         }
     }
     .admin-new-item {
@@ -188,6 +213,11 @@ body {
                 color: #7C8DB5;
                 background: #fff url("/images/admin-search.png") no-repeat left 28px center;
                 padding: 0 30px 0 67px;
+                &.white {
+                    background: rgba(255, 255, 255, 0.4) url("/images/admin-search-white.png") no-repeat left 28px center;
+                    color: #fff;
+                    border: 1px solid rgba(255, 255, 255, 0.4);
+                }
             }
         }
     }

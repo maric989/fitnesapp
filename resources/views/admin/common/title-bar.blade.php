@@ -5,7 +5,18 @@
         </div>
     @endif
     <div class="flex space-between">
-        <div class="admin-title semi-bold">{{ $title }}</div>
+        <div class="flex">
+            <div class="admin-title semi-bold {{ $theme_color ?? '' }}">{{ $title }}</div>
+            @if(isset($title_options) && !empty($title_options))
+                <div class="admin-title-tree-dots relative pointer">
+                    <div class="admin-title-menu absolute hide">
+                        @foreach($title_options as $title_option)
+                            <a href="{{ route($title_option['route'], $title_option['route_parameters']) }}" class="block">{{ $title_option['title'] }}</a>
+                        @endforeach
+                    </div>
+                </div>
+            @endif
+        </div>
         <div>
             <div class="flex">
                 @if(isset($view_route))
@@ -23,7 +34,7 @@
                     </div>
                 @endif
                 @if(isset($new_route))
-                    <a href="{{ route($new_route) }}" class="admin-new-item uppercase flex v-align-center bold">+ New program</a>
+                    <a href="{{ route($new_route, $new_route_params ?? []) }}" class="admin-new-item uppercase flex v-align-center bold">{{ $new_title }}</a>
                 @endif
             </div>
         </div>

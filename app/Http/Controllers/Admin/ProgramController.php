@@ -37,6 +37,9 @@ class ProgramController extends Controller
         $difficulties = Difficulty::all();
 
         return view('admin.program.manage')->with([
+            'manage_title' => 'Create Program',
+            'action_route' => 'admin.program.store',
+            'action_route_params' => null,
             'focuses' => $focuses,
             'intensities' => $intensities,
             'difficulties' => $difficulties
@@ -80,9 +83,21 @@ class ProgramController extends Controller
 
     public function editProgram(int $programId)
     {
-        $program = Program::whereId($programId)->programData()->first();
+        $program = Program::whereId($programId)->with(['coverPhoto'])->first();
 
-        // edit program blade
+        $focuses = Focus::all();
+        $intensities = Intensity::all();
+        $difficulties = Difficulty::all();
+
+        return view('admin.program.manage')->with([
+            'manage_title' => 'Edit Program',
+            'action_route' => 'admin.program.update.single',
+            'action_route_params' => ['program_id' => $program->id],
+            'focuses' => $focuses,
+            'intensities' => $intensities,
+            'difficulties' => $difficulties,
+            'program' => $program,
+        ]);
     }
 
     public function updateProgram()

@@ -27,7 +27,7 @@ $('document').ready(function () {
         $(this).children('.form-duration').slider({
             min: 1,
             max: 90,
-            vale: currentValue,
+            value: currentValue,
             create: function() {
                 $('#' + handleId).html('<span>' + $( this ).slider( "value" ) + ' days</span>');
             },

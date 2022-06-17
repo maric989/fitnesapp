@@ -1,9 +1,60 @@
+@import "resources/sass/vars/color";
+
 .admin-container .admin-body .admin-content {
     padding: 0;
 }
 
 .program-view-header {
-    padding: 58px 75px 68px 72px;
-    height: 515px;
-    background-size: auto 100%;
+    background-size: contain;
+    .program-view-header-bg {
+        padding: 58px 75px 0 72px;
+        height: 457px;
+        background: linear-gradient(180deg, rgba(47, 45, 41, 0.43) 0%, #1F1D1B 100%);
+        .program-view-data {
+            padding-top: 40px;
+            color: #fff;
+            .program-view-data-top-option {
+                background-position: left center;
+                font-size: 14px;
+                background-repeat: no-repeat;
+                padding: 0 12px 0 25px;
+                &.time {
+                    background-image: url("/images/timer-icon.png");
+                }
+                &.level {
+                    background-image: url("/images/level-icon.png");
+                }
+            }
+            .program-view-data-short-description {
+                padding-top: 20px;
+                font-size: 18px;
+                width: 70%;
+            }
+            .program-view-data-bottom {
+                padding-top: 20px;
+                .program-view-data-bottom-option {
+                    font-size: 14px;
+                    background: $mainGreen;
+                    padding: 0 12px;
+                    border-radius: 12px;
+                    height: 23px;
+                    margin-right: 10px;
+                }
+            }
+        }
+    }
+}
+.program-view-content {
+    padding: 80px 75px 80px 72px;
+    .program-view-description {
+        .title {
+            color: #0D1118;
+            font-size: 32px;
+        }
+        .description {
+            color: #0D1119;
+            font-size: 18px;
+            padding-top: 40px;
+        }
+    }
 }

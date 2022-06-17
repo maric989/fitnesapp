@@ -13,7 +13,7 @@
             @csrf
             <label for="email" class="form-label block">Username or email</label>
             <div class="form-element">
-                <input name="email" id="email" placeholder="Enter username or email" class="@error('password') error @enderror" />
+                <input name="email" id="email" value="{{ old('email') }}" placeholder="Enter username or email" class="@error('password') error @enderror" />
             </div>
             <label for="password" class="form-label block">Password</label>
             <div class="form-element">
