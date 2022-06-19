@@ -1,7 +1,8 @@
 @import "resources/sass/vars/color";
 
 .auth-container {
-    background: $mainColor;
+    background: $mainColor url("/images/login-bg.png") no-repeat;
+    background-size: cover;
     overflow-y: auto;
     .auth-content {
         padding: 36px 126px 36px 60px;

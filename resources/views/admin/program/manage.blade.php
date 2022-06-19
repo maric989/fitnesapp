@@ -34,7 +34,7 @@
                         </div>
                         <label for="trailer_id" class="form-label block">Enter video ID</label>
                         <div class="form-element">
-                            <input name="trailer_id" id="trailer_id" placeholder="Insert program title" value="{{ old('trailer_id', $program->trailer_id ?? null) }}" class="@error('trailer_id') error @enderror" />
+                            <input name="trailer_id" id="trailer_id" placeholder="Enter Video ID" value="{{ old('trailer_id', $program->trailer_id ?? null) }}" class="@error('trailer_id') error @enderror" />
                         </div>
                         <label for="duration" class="form-label block">Duration (number of days)</label>
                         <div class="form-element form-duration-container" data-current-value="{{ old('duration', $program->duration ?? 1) }}" data-field-id="duration" data-handle-id="duration-handle">

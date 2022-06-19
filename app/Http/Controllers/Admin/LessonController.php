@@ -20,11 +20,14 @@ class LessonController extends Controller
         $difficulties = Difficulty::all();
         $freeDays = ProgramLessonDay::programFreeDays($programId)->pluck('day')->toArray();
 
-        return view('lesson.create')->with([
+        return view('admin.lesson.manage')->with([
             'intensities' => $intensities,
             'difficulties' => $difficulties,
             'days' => $freeDays,
-            'program' => $program
+            'program' => $program,
+            'manage_title' => 'Create Lesson',
+            'action_route' => 'admin.lesson.store',
+            'action_route_params' => ['program_id' => $programId],
         ]);
     }
 

@@ -1,7 +1,7 @@
 <div class="admin-title-container">
     @if(isset($back_link))
         <div class="admin-title-back-link">
-            <a href="{{ route($back_link) }}" class="bock">{{ $back_link_title }}</a>
+            <a href="{{ route($back_link, $back_link_parameters ?? null) }}" class="bock">{{ $back_link_title }}</a>
         </div>
     @endif
     <div class="flex space-between">
