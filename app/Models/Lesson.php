@@ -10,7 +10,12 @@ class Lesson extends Model
     use HasFactory;
 
     protected $fillable = [
-        'program_id', 'title', 'video_id', 'short_description', 'full_description',
+        'title', 'video_id', 'short_description', 'full_description',
         'cover_image_id', 'intensity_id', 'difficulty_id'
     ];
+
+    public function programs()
+    {
+        return $this->belongsToMany(Program::class);
+    }
 }

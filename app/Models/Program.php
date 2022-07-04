@@ -34,6 +34,11 @@ class Program extends Model
         return $this->hasOne(File::class, 'id', 'cover_id');
     }
 
+    public function lessons()
+    {
+        return $this->belongsToMany(Lesson::class);
+    }
+
     public function scopeWhereId($query, $id)
     {
         return $query->where('id', $id);

@@ -15,7 +15,6 @@ class CreateLessonsTable extends Migration
     {
         Schema::create('lessons', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('program_id');
             $table->string('title');
             $table->string('video_id');
             $table->text('short_description')->nullable();
@@ -25,7 +24,6 @@ class CreateLessonsTable extends Migration
             $table->unsignedBigInteger('difficulty_id');
             $table->timestamps();
 
-            $table->foreign('program_id')->references('id')->on('programs');
             $table->foreign('intensity_id')->references('id')->on('intensities');
             $table->foreign('difficulty_id')->references('id')->on('difficulties');
             $table->foreign('cover_image_id')->references('id')->on('files');
