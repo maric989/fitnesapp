@@ -19,7 +19,8 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             FocusSeeder::class,
             IntensitySeeder::class,
-            DifficultySeeder::class
+            DifficultySeeder::class,
+            CoachSeeder::class,
         ]);
     }
 }
