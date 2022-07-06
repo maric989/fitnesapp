@@ -21,7 +21,7 @@
                     <div class="admin-manage-form-side">
                         <label for="title" class="form-label block">Title</label>
                         <div class="form-element">
-                            <input name="title" id="title" placeholder="Insert program title" value="{{ old('title', $lesson->title ?? null) }}" class="@error('title') error @enderror" />
+                            <input name="title" id="title" placeholder="Insert lesson title" value="{{ old('title', $lesson->title ?? null) }}" class="@error('title') error @enderror" />
                         </div>
                         <label for="video_id" class="form-label block">Full video</label>
                         <div class="form-element">
@@ -30,14 +30,14 @@
                         <label for="intensity_id" class="form-label block">Intensity</label>
                         <div class="form-element">
                             <select name="intensity_id" id="intensity_id" class="@error('intensity_id') error @enderror">
-                                <option value="">Select program intensity</option>
+                                <option value="">Select lesson intensity</option>
                                 @foreach($intensities as $intensity)
                                     <option value="{{ $intensity->id }}" @if(old('intensity_id', $lesson->intensity_id ?? null) == $intensity->id) selected @endif>{{ $intensity->name }}</option>
                                 @endforeach
                             </select>
                         </div>
                         <label for="duration" class="form-label block">Allocation</label>
-                        <div class="form-element form-duration-container" data-current-value="{{ old('day', $intensity->day ?? 1) }}" data-field-id="day" data-handle-id="day-handle">
+                        <div class="form-element form-duration-container" data-current-value="{{ old('day', $intensity->day ?? 1) }}" data-max-value="{{ $program->duration }}" data-available-values="{{ $days }}" data-field-id="day" data-handle-id="day-handle">
                             <div class="form-duration">
                                 <div class="ui-slider-handle form-duration-handle" id="day-handle"></div>
                             </div>
@@ -46,7 +46,7 @@
                         <label for="difficulty_id" class="form-label block">Difficulty</label>
                         <div class="form-element">
                             <select name="difficulty_id" id="difficulty_id" class="@error('difficulty_id') error @enderror">
-                                <option value="">Select program difficulty</option>
+                                <option value="">Select lesson difficulty</option>
                                 @foreach($difficulties as $difficult)
                                     <option value="{{ $difficult->id }}" @if(old('difficulty_id', $lesson->difficulty_id ?? null) == $difficult->id) selected @endif>{{ $difficult->name }}</option>
                                 @endforeach
@@ -56,7 +56,7 @@
                     <div class="admin-manage-form-side">
                         <label for="short_description" class="form-label block">Overview</label>
                         <div class="form-element">
-                            <textarea name="short_description" id="short_description" class="admin-small-textarea @error('short_description') error @enderror" placeholder="Insert program short description (max. 250 characters)">{{ old('short_description', $lesson->short_description ?? null) }}</textarea>
+                            <textarea name="short_description" id="short_description" class="admin-small-textarea @error('short_description') error @enderror" placeholder="Insert lesson short description (max. 250 characters)">{{ old('short_description', $lesson->short_description ?? null) }}</textarea>
                         </div>
                         <label for="cover_image" class="form-label block">Video cover image (16:9 image ratio)</label>
                         <div class="form-element">
@@ -69,11 +69,20 @@
                                 </div>
                             </div>
                         </div>
+                        <label for="coach_id" class="form-label block">Coach</label>
+                        <div class="form-element">
+                            <select name="coach_id" id="coach_id" class="@error('coach_id') error @enderror">
+                                <option value="">Select coach</option>
+                                @foreach($coaches as $coach)
+                                    <option value="{{ $coach->id }}" @if(old('coach_id', $lesson->coach_id ?? null) == $coach->id) selected @endif>{{ $coach->first_name }} {{ $coach->last_name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
                     </div>
                 </div>
-                <label for="full_description" class="form-label block">Full program description</label>
+                <label for="full_description" class="form-label block">Full lesson description</label>
                 <div class="form-element">
-                    <textarea name="full_description" id="full_description" class="admin-big-textarea @error('full_description') error @enderror" placeholder="Insert program full description (max. 2000 characters)">{{ old('full_description', $lesson->full_description ?? null) }}</textarea>
+                    <textarea name="full_description" id="full_description" class="admin-big-textarea @error('full_description') error @enderror" placeholder="Insert lesson full description (max. 2000 characters)">{{ old('full_description', $lesson->full_description ?? null) }}</textarea>
                 </div>
                 <div class="form-buttons flex h-align-center">
                     <div class="form-button-content">

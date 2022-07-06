@@ -8,6 +8,7 @@ use Illuminate\Foundation\Http\FormRequest;
  * @property $title
  * @property $video_id
  * @property $intensity_id
+ * @property $coach_id
  * @property $difficulty_id
  * @property $short_description
  * @property $full_description
@@ -37,6 +38,7 @@ class LessonStoreRequest extends FormRequest
             'title' => ['required'],
             'video_id' => ['required', 'string'],
             'intensity_id' => ['required', 'integer'],
+            'coach_id' => ['required', 'integer'],
             'difficulty_id' => ['required', 'integer'],
             'short_description' => ['nullable'],
             'full_description' => ['required'],

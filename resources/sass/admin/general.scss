@@ -33,6 +33,9 @@ body {
                     &.programs-icon {
                         background: url("/images/programs-icon.png") no-repeat center;
                     }
+                    &.lessons-icon {
+                        background: url("/images/lessons-icon.png") no-repeat center;
+                    }
                     &.coaches-icon {
                         background: url("/images/coaches-icon.png") no-repeat center;
                     }
@@ -52,6 +55,9 @@ body {
                         }
                         &.programs-icon {
                             background: url("/images/programs-icon-active.png") no-repeat center;
+                        }
+                        &.lessons-icon {
+                            background: url("/images/lessons-icon-active.png") no-repeat center;
                         }
                         &.coaches-icon {
                             background: url("/images/coaches-icon-active.png") no-repeat center;

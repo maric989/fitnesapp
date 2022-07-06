@@ -16,6 +16,11 @@
             <div class="text">Programs</div>
         </a>
         <a href="/admin" class="admin-left-menu-option flex v-align-center relative">
+            <div class="menu-icon lessons-icon absolute"></div>
+            <div class="menu-icon lessons-icon active-icon absolute"></div>
+            <div class="text">Lessons</div>
+        </a>
+        <a href="/admin" class="admin-left-menu-option flex v-align-center relative">
             <div class="menu-icon coaches-icon absolute"></div>
             <div class="menu-icon coaches-icon active-icon absolute"></div>
             <div class="text">Coaches</div>

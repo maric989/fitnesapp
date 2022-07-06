@@ -33,7 +33,7 @@ class LessonController extends Controller
         return view('admin.lesson.manage')->with([
             'intensities' => $intensities,
             'difficulties' => $difficulties,
-            'days' => $freeDays,
+            'days' => json_encode($freeDays),
             'program' => $program,
             'coaches' => $coaches,
             'manage_title' => 'Create Lesson',
@@ -45,14 +45,15 @@ class LessonController extends Controller
     public function storeLesson(int $programId, LessonStoreRequest $request, FileService $fileService)
     {
         $lesson = Lesson::create([
-            'program_id' => $programId,
             'title' => $request->title,
             'video_id' => $request->video_id,
+            'coach_id' => $request->coach_id,
             'short_description' => $request->short_description,
             'full_description' => $request->full_description,
             'intensity_id' => $request->intensity_id,
             'difficulty_id' => $request->difficulty_id
         ]);
+
         LessonProgram::create([
             'program_id' => $programId,
             'lesson_id' => $lesson->id

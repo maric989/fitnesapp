@@ -22,18 +22,40 @@ $('document').ready(function () {
         let currentValue = $(this).data('currentValue');
         let fieldId = $(this).data('fieldId');
         let handleId = $(this).data('handleId');
+        let maxValue = $(this).data('maxValue');
+        let availableValues = $(this).data('availableValues');
         $('#' + fieldId).addClass('hide');
 
         $(this).children('.form-duration').slider({
             min: 1,
-            max: 90,
+            max: maxValue,
             value: currentValue,
             create: function() {
                 $('#' + handleId).html('<span>' + $( this ).slider( "value" ) + ' days</span>');
+                if (availableValues) {
+                    let indexValue = availableValues.findIndex(x => x === $( this ).slider( "value" ));
+                    if (indexValue > -1) {
+                        $('#' + handleId).removeClass('error');
+                    } else {
+                        $('#' + handleId).addClass('error');
+                    }
+                } else {
+                    $('#' + handleId).removeClass('error');
+                }
             },
             slide: function( event, ui ) {
                 $('#' + handleId).html('<span>' + ui.value + ' days</span>');
                 $('#' + fieldId).val(ui.value);
+                if (availableValues) {
+                    let indexValue = availableValues.findIndex(x => x === ui.value);
+                    if (indexValue > -1) {
+                        $('#' + handleId).removeClass('error');
+                    } else {
+                        $('#' + handleId).addClass('error');
+                    }
+                } else {
+                    $('#' + handleId).removeClass('error');
+                }
             }
         });
     });

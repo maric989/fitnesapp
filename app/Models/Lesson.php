@@ -11,7 +11,7 @@ class Lesson extends Model
 
     protected $fillable = [
         'title', 'video_id', 'short_description', 'full_description',
-        'cover_image_id', 'intensity_id', 'difficulty_id'
+        'cover_image_id', 'intensity_id', 'difficulty_id', 'coach_id'
     ];
 
     public function programs()

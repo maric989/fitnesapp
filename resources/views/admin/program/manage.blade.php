@@ -37,7 +37,7 @@
                             <input name="trailer_id" id="trailer_id" placeholder="Enter Video ID" value="{{ old('trailer_id', $program->trailer_id ?? null) }}" class="@error('trailer_id') error @enderror" />
                         </div>
                         <label for="duration" class="form-label block">Duration (number of days)</label>
-                        <div class="form-element form-duration-container" data-current-value="{{ old('duration', $program->duration ?? 1) }}" data-field-id="duration" data-handle-id="duration-handle">
+                        <div class="form-element form-duration-container" data-current-value="{{ old('duration', $program->duration ?? 1) }}" data-max-value="90" data-field-id="duration" data-handle-id="duration-handle">
                             <div class="form-duration">
                                 <div class="ui-slider-handle form-duration-handle" id="duration-handle"></div>
                             </div>

@@ -78,7 +78,7 @@ class ProgramController extends Controller
 
     public function getProgram(int $programId)
     {
-        return view('admin.program.view', ['program' => Program::whereId($programId)->programData()->first()]);
+        return view('admin.program.view', ['program' => Program::whereId($programId)->with('lessons')->programData()->first()]);
     }
 
     public function editProgram(int $programId)

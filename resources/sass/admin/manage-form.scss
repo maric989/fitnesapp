@@ -83,5 +83,11 @@
             text-align: center;
             left: -18px;
         }
+        &.error {
+            border: 5px solid #D63301;
+            span {
+                color: #D63301;
+            }
+        }
     }
 }
