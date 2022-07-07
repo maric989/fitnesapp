@@ -34,7 +34,7 @@ class ProgramLessonFreeDayRule implements Rule
             ->whereNull('lesson_id')
             ->first();
 
-        if (empty($freeDay)) {
+        if (empty($freeDay) || $freeDay->lesson_id !== null) {
             $valid = false;
         }
 

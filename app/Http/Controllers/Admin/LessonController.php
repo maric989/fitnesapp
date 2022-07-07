@@ -73,5 +73,7 @@ class LessonController extends Controller
                 'lesson_id' => $lesson->id
             ]);
         }
+
+        return redirect(route('admin.program.paginate'));
     }
 }
