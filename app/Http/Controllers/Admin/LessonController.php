@@ -12,6 +12,7 @@ use App\Models\LessonProgram;
 use App\Models\Program;
 use App\Models\ProgramLessonDay;
 use App\Services\File\FileService;
+use Illuminate\Http\Request;
 
 class LessonController extends Controller
 {
@@ -22,12 +23,20 @@ class LessonController extends Controller
         dd($lessons);
     }
 
-    public function createLesson(int $programId)
+    public function createLesson(Request $request)
     {
-        $program = Program::where('id', $programId)->first();
+        $program = null;
+        $freeDays = null;
+        $programId = null;
+
+        if($request->has('program_id')) {
+            $program = Program::where('id', $request->get('program_id'))->first();
+            $programId = $program->id;
+            $freeDays = ProgramLessonDay::programFreeDays($program->id)->pluck('day')->toArray();
+        }
+
         $intensities = Intensity::all();
         $difficulties = Difficulty::all();
-        $freeDays = ProgramLessonDay::programFreeDays($programId)->pluck('day')->toArray();
         $coaches = Coach::all();
 
         return view('admin.lesson.manage')->with([
@@ -42,7 +51,7 @@ class LessonController extends Controller
         ]);
     }
 
-    public function storeLesson(int $programId, LessonStoreRequest $request, FileService $fileService)
+    public function storeLesson(LessonStoreRequest $request, FileService $fileService)
     {
         $lesson = Lesson::create([
             'title' => $request->title,
@@ -54,17 +63,15 @@ class LessonController extends Controller
             'difficulty_id' => $request->difficulty_id
         ]);
 
-        LessonProgram::create([
-            'program_id' => $programId,
-            'lesson_id' => $lesson->id
-        ]);
-
         $coverImage = $fileService->addLessonCoverImage($lesson, $request->cover_image);
         $lesson->update([
             'cover_image_id' => $coverImage->id
         ]);
-        ProgramLessonDay::where('program_id', $programId)->where('day', $request->day)->update([
-            'lesson_id' => $lesson->id
-        ]);
+
+        if ($request->has('program_id')) {
+            ProgramLessonDay::where('program_id', $request->program_id)->where('day', $request->day)->update([
+                'lesson_id' => $lesson->id
+            ]);
+        }
     }
 }
