@@ -15,10 +15,24 @@
                     @endforeach
                 </div>
             @endif
-            <form action="{{ route($action_route, $action_route_params) }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route($action_route) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="flex space-between">
                     <div class="admin-manage-form-side">
+                        <label for="program_id" class="form-label block">Program</label>
+                        <div class="form-element">
+                            @if (!empty($program))
+                                <input type="hidden" name="program_id" value="{{ $program->id }}" />
+                                <input id="program_id" readonly value="{{ $program->title }}" />
+                            @else
+                                <select name="intensity_id" id="intensity_id" class="@error('intensity_id') error @enderror">
+                                    <option value="">Select lesson intensity</option>
+                                    @foreach($intensities as $intensity)
+                                        <option value="{{ $intensity->id }}" @if(old('intensity_id', $lesson->intensity_id ?? null) == $intensity->id) selected @endif>{{ $intensity->name }}</option>
+                                    @endforeach
+                                </select>
+                            @endif
+                        </div>
                         <label for="title" class="form-label block">Title</label>
                         <div class="form-element">
                             <input name="title" id="title" placeholder="Insert lesson title" value="{{ old('title', $lesson->title ?? null) }}" class="@error('title') error @enderror" />

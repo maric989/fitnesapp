@@ -27,11 +27,9 @@ class LessonController extends Controller
     {
         $program = null;
         $freeDays = null;
-        $programId = null;
 
         if($request->has('program_id')) {
             $program = Program::where('id', $request->get('program_id'))->first();
-            $programId = $program->id;
             $freeDays = ProgramLessonDay::programFreeDays($program->id)->pluck('day')->toArray();
         }
 
@@ -46,8 +44,7 @@ class LessonController extends Controller
             'program' => $program,
             'coaches' => $coaches,
             'manage_title' => 'Create Lesson',
-            'action_route' => 'admin.lesson.store',
-            'action_route_params' => ['program_id' => $programId],
+            'action_route' => 'admin.lesson.store'
         ]);
     }
 
@@ -72,8 +69,11 @@ class LessonController extends Controller
             ProgramLessonDay::where('program_id', $request->program_id)->where('day', $request->day)->update([
                 'lesson_id' => $lesson->id
             ]);
+            $returnRoute = route('admin.program.get.single', ['program_id' => $request->program_id]);
+        } else {
+            $returnRoute = route('admin.lesson.paginate');
         }
 
-        return redirect(route('admin.program.paginate'));
+        return redirect($returnRoute);
     }
 }
