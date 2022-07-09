@@ -41,4 +41,10 @@ return [
             ]
         ],
     ],
+    'coach' => [
+        'profile_picture' => [
+            'store-path' => storage_path('app/public/coaches/%s/cover_image'),
+            'save-path' => '/storage/coaches/%s/cover_image/%s',
+        ],
+    ],
 ];

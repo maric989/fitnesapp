@@ -12,6 +12,9 @@ class CoachFactory extends Factory
         return [
             'first_name' => $this->faker->firstName(),
             'last_name' => $this->faker->lastName(),
+            'about' => $this->faker->text(),
+            'bio' => $this->faker->text(80),
+            'experience' => rand(1,10)
         ];
     }
 

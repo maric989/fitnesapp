@@ -18,6 +18,9 @@ class CreateCoachesTable extends Migration
             $table->string('first_name');
             $table->string('last_name');
             $table->unsignedBigInteger('profile_picture_id')->nullable();
+            $table->text('about');
+            $table->integer('experience');
+            $table->text('bio');
             $table->timestamps();
             $table->softDeletes();
 

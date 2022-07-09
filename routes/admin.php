@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\Admin\CoachController;
 use App\Http\Controllers\Admin\LessonController;
 use App\Http\Controllers\Admin\ProgramController;
+use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware(['isAdmin', 'auth'])->group(function () {
@@ -27,6 +29,21 @@ Route::middleware(['isAdmin', 'auth'])->group(function () {
             Route::prefix('{lesson_id}')->group(function () {
                 Route::get('/edit', [LessonController::class, 'editLesson'])->name('admin.lesson.edit');
                 Route::put('/', [LessonController::class, 'updateLesson'])->name('admin.lesson.update');
+            });
+        });
+
+        Route::prefix('users')->group(function () {
+            Route::get('/', [UserController::class, 'paginateUsers'])->name('admin.users.paginate');
+        });
+
+        Route::prefix('coaches')->group(function () {
+            Route::get('/paginate', [CoachController::class, 'paginateCoaches'])->name('admin.coach.paginate');
+            Route::get('/', [CoachController::class, 'createCoach'])->name('admin.coach.create');
+            Route::post('/', [CoachController::class, 'storeCoach'])->name('admin.coach.store');
+            Route::prefix('{coach_id}')->group(function () {
+                Route::get('/', [CoachController::class, 'getCoach'])->name('admin.coach.single');
+                Route::get('/edit', [CoachController::class, 'editCoach'])->name('admin.coach.edit');
+                Route::post('/update', [CoachController::class, 'updateCoach'])->name('admin.coach.update');
             });
         });
     });
