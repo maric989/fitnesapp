@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProgramStoreRequest;
+use App\Http\Requests\ProgramUpdateRequest;
 use App\Models\Difficulty;
 use App\Models\Focus;
 use App\Models\Intensity;
@@ -100,8 +101,30 @@ class ProgramController extends Controller
         ]);
     }
 
-    public function updateProgram()
+    public function updateProgram(int $programId, ProgramUpdateRequest $request, FileService $fileService)
     {
+        $program = Program::find($programId);
+        $program->update([
+            'title' => $request->title,
+            'short_description' => $request->short_description,
+            'full_description' => $request->full_description,
+            'trailer_id' => $request->trailer_id,
+            'duration' => $request->duration,
+            'difficulty_id' => $request->difficulty_id,
+            'focus_id' => $request->focus_id,
+            'intensity_id' => $request->intensity_id
+        ]);
 
+        if ($request->has('cover_image')) {
+            $program->update([
+                'cover_id' => null
+            ]);
+            $coverImage = $fileService->updateProgramCoverImage($program, $request->cover_image);
+            $program->update([
+                'cover_id' => $coverImage->id
+            ]);
+        }
+
+        return back();
     }
 }

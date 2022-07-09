@@ -47,4 +47,20 @@ class FileService
             'full_path' => sprintf($this->config['lesson']['cover_image']['save-path'], $lesson->id, $fileName)
         ]);
     }
+
+    public function updateProgramCoverImage(Program $program, UploadedFile $file)
+    {
+        $path = sprintf($this->config['program']['cover_image']['store-path'] , $program->id);
+        FileFacade::makeDirectory($path, 0755, true, true);
+        $fileName = md5($file->getClientOriginalName()) . '.' . $file->getClientOriginalExtension();
+        Image::make($file)->save($path . '/'. $fileName);
+        $image = File::where('id', $program->cover_id)->delete();
+
+        return File::create([
+            'size' => $file->getSize(),
+            'name' => $fileName,
+            'type' => $file->getMimeType(),
+            'full_path' => sprintf($this->config['program']['cover_image']['save-path'], $program->id, $fileName)
+        ]);
+    }
 }
