@@ -8,7 +8,6 @@ use App\Models\Coach;
 use App\Models\Difficulty;
 use App\Models\Intensity;
 use App\Models\Lesson;
-use App\Models\LessonProgram;
 use App\Models\Program;
 use App\Models\ProgramLessonDay;
 use App\Services\File\FileService;

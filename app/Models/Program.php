@@ -36,7 +36,8 @@ class Program extends Model
 
     public function lessons()
     {
-        return $this->belongsToMany(Lesson::class);
+        return $this->belongsToMany(Lesson::class, 'program_lesson_days')
+            ->withPivot(['day']);
     }
 
     public function scopeWhereId($query, $id)
