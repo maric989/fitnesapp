@@ -8,7 +8,7 @@ use App\Http\Requests\ProgramUpdateRequest;
 use App\Models\Program;
 use App\Models\ProgramLessonDay;
 use App\Services\File\FileService;
-use App\Services\Program\AdminProgramFacade;
+use App\Services\Program\Facade\AdminProgramFacade;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cookie;
 

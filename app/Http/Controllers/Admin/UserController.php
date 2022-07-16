@@ -3,16 +3,20 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Enum\User\UserRoleEnum;
-use App\Models\User;
+use App\Services\User\Facade\AdminUserFacade;
 
 class UserController extends Controller
 {
+    private AdminUserFacade $facade;
+
+    public function __construct(AdminUserFacade $adminUserFacade)
+    {
+        $this->facade = $adminUserFacade;
+    }
+
     public function paginateUsers()
     {
-        $users = User::whereHas('role', function ($q) {
-            $q->where('name', '!=', UserRoleEnum::ADMIN);
-        })->paginate();
+        $users = $this->facade->getListPaginated();
 
         dd($users);
     }

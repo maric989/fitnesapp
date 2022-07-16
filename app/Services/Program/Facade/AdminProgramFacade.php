@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\Program;
+namespace App\Services\Program\Facade;
 
 use App\Http\Requests\ProgramStoreRequest;
 use App\Models\File;
