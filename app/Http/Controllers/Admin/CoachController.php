@@ -5,14 +5,22 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CoachStoreRequest;
 use App\Models\Coach;
+use App\Services\Coach\Facade\AdminCoachFacade;
 use App\Services\File\FileService;
 use Illuminate\Http\Request;
 
 class CoachController extends Controller
 {
+    private AdminCoachFacade $facade;
+
+    public function __construct(AdminCoachFacade $adminCoachFacade)
+    {
+        $this->facade = $adminCoachFacade;
+    }
+
     public function paginateCoaches()
     {
-        $coaches = Coach::paginate();
+        $coaches = $this->facade->getListPaginated();
 
         dd($coaches);
     }
@@ -24,18 +32,9 @@ class CoachController extends Controller
 
     public function storeCoach(CoachStoreRequest $request, FileService $fileService)
     {
-        $coach = Coach::create([
-            'first_name' => $request->first_name,
-            'last_name' => $request->last_name,
-            'about' => $request->about,
-            'experience' => $request->experience,
-            'bio' => $request->bio,
-        ]);
-
+        $coach = $this->facade->createCoach($request);
         $profilePicture = $fileService->addCoachProfileImage($coach, $request->profile_picture);
-        $coach->update([
-            'profile_picture_id' => $profilePicture->id
-        ]);
+        $this->facade->updateCoachProfilePicture($coach, $profilePicture);
 
         return redirect(route('admin.coach.single', $coach->id));
     }

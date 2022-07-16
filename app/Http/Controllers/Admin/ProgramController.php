@@ -5,18 +5,21 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProgramStoreRequest;
 use App\Http\Requests\ProgramUpdateRequest;
-use App\Models\Difficulty;
-use App\Models\Focus;
-use App\Models\Intensity;
 use App\Models\Program;
 use App\Models\ProgramLessonDay;
 use App\Services\File\FileService;
+use App\Services\Program\AdminProgramFacade;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cookie;
 
 class ProgramController extends Controller
 {
-    const PROGRAMS_PER_PAGE_ADMIN = 10;
+    private AdminProgramFacade $facade;
+
+    public function __construct(AdminProgramFacade $adminProgramFacade)
+    {
+        $this->facade = $adminProgramFacade;
+    }
 
     public function paginatePrograms(Request $request)
     {
@@ -27,15 +30,16 @@ class ProgramController extends Controller
         } else if ($request->cookie('view_mode')) {
             $view = $request->cookie('view_mode');
         }
+        $programs = $this->facade->getListPaginated();
 
-        return view('admin.program.paginate', ['programs' => Program::programData()->paginate(self::PROGRAMS_PER_PAGE_ADMIN), 'view' => $view]);
+        return view('admin.program.paginate', ['programs' => $programs, 'view' => $view]);
     }
 
     public function createProgram()
     {
-        $focuses = Focus::all();
-        $intensities = Intensity::all();
-        $difficulties = Difficulty::all();
+        $focuses = $this->facade->getFocuses();
+        $intensities = $this->facade->getIntensity();
+        $difficulties = $this->facade->getDifficulty();
 
         return view('admin.program.manage')->with([
             'manage_title' => 'Create Program',
@@ -49,21 +53,9 @@ class ProgramController extends Controller
 
     public function storeProgram(ProgramStoreRequest $request, FileService $fileService)
     {
-        $program = Program::create([
-            'title' => $request->title,
-            'short_description' => $request->short_description,
-            'full_description' => $request->full_description,
-            'trailer_id' => $request->trailer_id,
-            'duration' => $request->duration,
-            'difficulty_id' => $request->difficulty_id,
-            'focus_id' => $request->focus_id,
-            'intensity_id' => $request->intensity_id
-        ]);
-
+        $program = $this->facade->createProgram($request);
         $coverImage = $fileService->addProgramCoverImage($program, $request->cover_image);
-        $program->update([
-            'cover_id' => $coverImage->id
-        ]);
+        $this->facade->updateProgramCoverImage($program, $coverImage);
 
         $programDays = [];
         for ($i = 1; $i <= $request->duration; $i++) {
@@ -86,9 +78,9 @@ class ProgramController extends Controller
     {
         $program = Program::whereId($programId)->with(['coverPhoto'])->first();
 
-        $focuses = Focus::all();
-        $intensities = Intensity::all();
-        $difficulties = Difficulty::all();
+        $focuses = $this->facade->getFocuses();
+        $intensities = $this->facade->getIntensity();
+        $difficulties = $this->facade->getDifficulty();
 
         return view('admin.program.manage')->with([
             'manage_title' => 'Edit Program',
@@ -120,9 +112,7 @@ class ProgramController extends Controller
                 'cover_id' => null
             ]);
             $coverImage = $fileService->updateProgramCoverImage($program, $request->cover_image);
-            $program->update([
-                'cover_id' => $coverImage->id
-            ]);
+            $this->facade->updateProgramCoverImage($program, $coverImage);
         }
 
         return back();
