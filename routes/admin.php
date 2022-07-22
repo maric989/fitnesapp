@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\Admin\CoachController;
 use App\Http\Controllers\Admin\LessonController;
 use App\Http\Controllers\Admin\ProgramController;
@@ -33,7 +34,12 @@ Route::middleware(['isAdmin', 'auth'])->group(function () {
         });
 
         Route::prefix('users')->group(function () {
-            Route::get('/', [UserController::class, 'paginateUsers'])->name('admin.users.paginate');
+            Route::get('/paginate', [UserController::class, 'paginateUsers'])->name('admin.users.paginate');
+            Route::prefix('{coach_id}')->group(function () {
+                Route::get('/', [UserController::class, 'getUser'])->name('admin.user.single');
+                Route::get('/edit', [UserController::class, 'editUser'])->name('admin.user.edit');
+                Route::post('/update', [UserController::class, 'updateUser'])->name('admin.user.update');
+            });
         });
 
         Route::prefix('coaches')->group(function () {
@@ -45,6 +51,10 @@ Route::middleware(['isAdmin', 'auth'])->group(function () {
                 Route::get('/edit', [CoachController::class, 'editCoach'])->name('admin.coach.edit');
                 Route::post('/update', [CoachController::class, 'updateCoach'])->name('admin.coach.update');
             });
+        });
+
+        Route::prefix('banners')->group(function () {
+            Route::get('/edit', [BannerController::class, 'editBanners']);
         });
     });
 });

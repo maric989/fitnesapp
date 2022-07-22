@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Enum\Banner\BannerTypeEnum;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -15,7 +16,8 @@ class CreateBannersTable extends Migration
     {
         Schema::create('banners', function (Blueprint $table) {
             $table->id();
-
+            $table->enum('type', BannerTypeEnum::getValues());
+            $table->text('data');
             $table->timestamps();
         });
     }

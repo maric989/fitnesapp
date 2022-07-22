@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
             IntensitySeeder::class,
             DifficultySeeder::class,
             CoachSeeder::class,
+            BannersSeeder::class
         ]);
     }
 }
