@@ -38,4 +38,38 @@
         </div>
     </div>
 
+    @if($program->lessons)
+        <div class="program-view-lessons">
+            <div class="title semi-bold">Lessons</div>
+            <div class="lessons-list">
+                <div class="flex space-between">
+                    <div class="first-lesson relative">
+                        <img src="{{ $program->lessons[0]->coverImage->full_path }}" class="block full lesson-list-image" />
+                        <div class="images-lesson-overlay absolute flex v-align-center h-align-center">
+                            <div class="play-normal"></div>
+                        </div>
+                        <div class="lesson-data-top absolute">
+                            <div class="flex">
+                                <div class="additional-info-item font-medium-weight flex v-align-center pointer">
+                                    {{ $program->lessons[0]->intensity->name }}
+                                </div>
+                                <div class="additional-info-item font-medium-weight flex v-align-center pointer">
+                                    {{ $program->lessons[0]->difficulty->name }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="lesson-data-bottom absolute">
+                            <div class="lesson-day">Day 1</div>
+                            <div class="lesson-title font-medium-weight">{{ $program->lessons[0]->title }}</div>
+                            <div class="lesson-description">{{ $program->lessons[0]->short_description }}</div>
+                        </div>
+                    </div>
+                    <div class="second-lessons">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endif
+
 @endsection

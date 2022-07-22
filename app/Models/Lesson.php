@@ -19,4 +19,19 @@ class Lesson extends Model
         return $this->belongsToMany(Program::class, 'program_lesson_days')
             ->withPivot(['day']);
     }
+
+    public function coverImage()
+    {
+        return $this->hasOne(File::class, 'id', 'cover_image_id');
+    }
+
+    public function difficulty()
+    {
+        return $this->hasOne(Difficulty::class, 'id', 'difficulty_id');
+    }
+
+    public function intensity()
+    {
+        return $this->hasOne(Intensity::class, 'id', 'intensity_id');
+    }
 }
