@@ -11,7 +11,7 @@
         <div class="table-cell semi-bold">Experience</div>
     </div>
     @foreach($coaches as $coach)
-        <a class="table-row body program-list-link" href="{{ route('admin.lesson.edit', ['lesson_id' => 2]) }}">
+        <a class="table-row body program-list-link" href="{{ route('admin.coach.edit', ['coach_id' => $coach->id]) }}">
             <div class="table-cell program-list-image-column">
                 <div style="background-image: url('{{ $coach->profileImage->full_path }}')" class="program-list-image"></div>
             </div>

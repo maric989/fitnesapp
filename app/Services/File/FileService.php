@@ -81,5 +81,21 @@ class FileService
         ]);
     }
 
+    public function updateCoachProfileImage(Coach $coach, UploadedFile $file)
+    {
+        $path = sprintf($this->config['coach']['profile_picture']['store-path'] , $coach->id);
+        $this->makeDirectory($path);
+        $fileName = $this->generateName($file);
+        Image::make($file)->save($path . '/'. $fileName);
+        File::where('id', $coach->profile_picture_id)->delete();
+
+        return File::create([
+            'size' => $file->getSize(),
+            'name' => $fileName,
+            'type' => $file->getMimeType(),
+            'full_path' => sprintf($this->config['coach']['profile_picture']['save-path'], $coach->id, $fileName)
+        ]);
+    }
+
 
 }

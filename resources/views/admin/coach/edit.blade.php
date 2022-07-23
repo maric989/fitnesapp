@@ -56,7 +56,7 @@
                 </div>
                 <div class="form-buttons flex h-align-center">
                     <div class="form-button-content">
-                        <a href="{{ route('admin.program.paginate') }}" class="button cancel link-button flex v-align-center">Cancel</a>
+                        <a href="{{ route('admin.coach.paginate') }}" class="button cancel link-button flex v-align-center">Cancel</a>
                     </div>
                     <div class="form-button-content">
                         <input type="submit" value="Save" class="button" />
