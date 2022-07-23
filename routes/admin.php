@@ -27,7 +27,7 @@ Route::middleware(['isAdmin', 'auth'])->group(function () {
         Route::prefix('lessons')->group(function () {
             Route::get('/', [LessonController::class, 'createLesson'])->name('admin.lesson.create');
             Route::post('/', [LessonController::class, 'storeLesson'])->name('admin.lesson.store');
-            Route::get('/paginate', [LessonController::class, 'paginateLessons'])->name('admin.lesson.paginate');
+            Route::get('/paginate', [LessonController::class, 'paginateLessons'])->name('admin.lessons.paginate');
             Route::prefix('{lesson_id}')->group(function () {
                 Route::get('/edit', [LessonController::class, 'editLesson'])->name('admin.lesson.edit');
                 Route::put('/', [LessonController::class, 'updateLesson'])->name('admin.lesson.update');

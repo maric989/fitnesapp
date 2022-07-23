@@ -21,4 +21,9 @@ class Coach extends Model
         'first_name', 'last_name', 'about', 'experience',
         'bio', 'profile_picture_id'
     ];
+
+    public function profileImage()
+    {
+        return $this->hasOne(File::class, 'id', 'profile_picture_id');
+    }
 }

@@ -34,4 +34,9 @@ class Lesson extends Model
     {
         return $this->hasOne(Intensity::class, 'id', 'intensity_id');
     }
+
+    public function programsTitle()
+    {
+        return $this->programs()->pluck('title')->toArray();
+    }
 }

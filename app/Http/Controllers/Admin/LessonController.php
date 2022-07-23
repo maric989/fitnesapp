@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LessonStoreRequest;
+use App\Models\Lesson;
 use App\Models\Program;
 use App\Models\ProgramLessonDay;
 use App\Services\File\FileService;
@@ -23,7 +24,9 @@ class LessonController extends Controller
     {
         $lessons = $this->facade->getListPaginated();
 
-        dd($lessons);
+        return view('admin.lesson.paginate')->with([
+            'lessons' => $lessons
+        ]);
     }
 
     public function createLesson(Request $request)
@@ -67,5 +70,23 @@ class LessonController extends Controller
         }
 
         return redirect($returnRoute);
+    }
+
+    public function editLesson(int $lessonId)
+    {
+        $focuses = $this->facade->getFocuses();
+        $difficulties = $this->facade->getDifficulty();
+        $intensities = $this->facade->getIntensity();
+        $lesson = Lesson::where('id', $lessonId)->first();
+
+        return view('admin.lesson.edit')->with([
+            'manage_title' => 'Edit Lesson',
+            'action_route' => 'admin.lesson.update',
+            'action_route_params' => [],
+            'focuses' => $focuses,
+            'intensities' => $intensities,
+            'difficulties' => $difficulties,
+            'lesson' => $lesson,
+        ]);
     }
 }

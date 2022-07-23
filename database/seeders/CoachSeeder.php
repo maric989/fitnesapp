@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Coach;
+use App\Models\File;
 use Illuminate\Database\Seeder;
 
 class CoachSeeder extends Seeder
@@ -14,6 +15,16 @@ class CoachSeeder extends Seeder
      */
     public function run()
     {
-        Coach::factory()->count(10)->create();
+        $coaches = Coach::factory()->count(10)->create();
+        $file = File::create([
+            'name' => 'coach dummy',
+            'full_path' => '/images/coach_dummy.png',
+            'size' => 111
+        ]);
+        foreach ($coaches as $coach) {
+            $coach->update([
+                'profile_picture_id' => $file->id
+            ]);
+        }
     }
 }

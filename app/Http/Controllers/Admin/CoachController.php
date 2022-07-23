@@ -22,7 +22,9 @@ class CoachController extends Controller
     {
         $coaches = $this->facade->getListPaginated();
 
-        dd($coaches);
+        return view('admin.coach.paginate')->with([
+            'coaches' => $coaches
+        ]);
     }
 
     public function createCoach()
