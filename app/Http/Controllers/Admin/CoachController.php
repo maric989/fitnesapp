@@ -29,7 +29,10 @@ class CoachController extends Controller
 
     public function createCoach()
     {
-        return view('admin.coach.create');
+        return view('admin.coach.create')->with([
+            'manage_title' => 'Create Coach',
+            'action_route' => 'admin.coach.store'
+        ]);
     }
 
     public function storeCoach(CoachStoreRequest $request, FileService $fileService)
@@ -41,17 +44,15 @@ class CoachController extends Controller
         return redirect(route('admin.coach.single', $coach->id));
     }
 
-    public function getCoach(Coach $coach)
+    public function editCoach(int $coachId)
     {
-        return view()->with([
-            'coach' => $coach
-        ]);
-    }
+        $coach = Coach::where('id', $coachId)->first();
 
-    public function editCoach(Coach $coach)
-    {
-        return view()->with([
-            'coach' => $coach
+        return view('admin.coach.edit')->with([
+            'coach' => $coach,
+            'manage_title' => 'Edit Coach',
+            'action_route' => 'admin.coach.edit',
+
         ]);
     }
 

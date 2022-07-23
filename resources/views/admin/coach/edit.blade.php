@@ -15,13 +15,13 @@
                     @endforeach
                 </div>
             @endif
-            <form action="{{ route($action_route) }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route($action_route, $coach->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="flex space-between">
                     <div class="admin-manage-form-side">
                         <label for="first_name" class="form-label block">First name</label>
                         <div class="form-element">
-                            <input name="first_name" id="first_name" value="" class="@error('first_name') error @enderror" />{{ old('first_name', $coach->first_name ?? null) }}
+                            <input name="first_name" id="first_name" value="{{ old('first_name', $coach->first_name ?? null) }}" class="@error('first_name') error @enderror" />
                         </div>
                         <label for="about" class="form-label block">Overview</label>
                         <div class="form-element">
@@ -29,19 +29,19 @@
                         </div>
                         <label for="experience" class="form-label block">Experience</label>
                         <div class="form-element">
-                            <input type="number" name="experience" id="experience" value="" class="@error('experience') error @enderror" />{{ old('experience', $coach->experience ?? null) }}
+                            <input type="number" name="experience" id="experience" value="{{ old('experience', $coach->experience ?? null) }}" class="@error('experience') error @enderror" />
                         </div>
                     </div>
                     <div class="admin-manage-form-side">
                         <label for="last_name" class="form-label block">Last name</label>
                         <div class="form-element">
-                            <input name="last_name" id="last_name" value="" class="@error('last_name') error @enderror" />
+                            <input name="last_name" id="last_name" value="{{ old('last_name', $coach->last_name ?? null) }}" class="@error('last_name') error @enderror" />
                         </div>
                         <label for="profile_picture" class="form-label block">Coach profile image (16:9 image ratio)</label>
                         <div class="form-element">
                             <div
                                 class="upload-file-container flex v-align-center h-align-center pointer"
-                                @if(isset($coach) && !empty($coach->coverPhoto)) style="background-image: url('{{ $program->coverPhoto->full_path }}')" @endif>
+                                @if(isset($coach) && !empty($coach->profileImage)) style="background-image: url('{{ $coach->profileImage->full_path }}')" @endif>
                                 <input type="file" name="profile_picture" id="profile_picture" class="input-file" />
                                 <div class="upload-file-content">
                                     Choose a file

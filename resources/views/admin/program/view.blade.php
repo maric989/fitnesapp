@@ -60,7 +60,7 @@
                             </div>
                         </div>
                         <div class="lesson-data-bottom absolute">
-                            <div class="lesson-day">{{ $lesson->difficulty->name }}</div>
+                            <div class="lesson-day">Day {{ $lesson->pivot->day }}</div>
                             <div class="lesson-title font-medium-weight">{{ $lesson->title }}</div>
                             <div class="lesson-description">{{ $lesson->short_description }}</div>
                         </div>

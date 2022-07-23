@@ -60,11 +60,11 @@
                         <div class="form-element">
                             <textarea name="short_description" id="short_description" class="admin-small-textarea @error('short_description') error @enderror" placeholder="Insert lesson short description (max. 250 characters)">{{ old('short_description', $lesson->short_description ?? null) }}</textarea>
                         </div>
-                        <label for="cover_image" class="form-label block">Video cover image (16:9 image ratio)</label>
+                        <label for="cover_image" class="form-label block">Profile image (16:9 image ratio)</label>
                         <div class="form-element">
                             <div
                                 class="upload-file-container flex v-align-center h-align-center pointer"
-                                @if(isset($lesson) && !empty($lesson->coverPhoto)) style="background-image: url('{{ $program->coverPhoto->full_path }}')" @endif>
+                                @if(isset($lesson) && !empty($lesson->coverImage)) style="background-image: url('{{ $lesson->coverImage->full_path }}')" @endif>
                                 <input type="file" name="cover_image" id="cover_image" class="input-file" />
                                 <div class="upload-file-content">
                                     Choose a file
