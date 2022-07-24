@@ -11,7 +11,7 @@ class AdminUserFacade implements AdminFacadeInterface
 {
     public function getListPaginated(): LengthAwarePaginator
     {
-        return User::whereHas('role', function ($q) {
+        return User::whereHas('roles', function ($q) {
             $q->where('name', '!=', UserRoleEnum::ADMIN);
         })->paginate();
     }

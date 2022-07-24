@@ -19,7 +19,11 @@ class UserController extends Controller
     {
         $users = $this->facade->getListPaginated();
 
-        dd($users);
+        return view('admin.users.paginate')->with([
+            'manage_title' => 'Edit Coach',
+            'action_route' => 'admin.user.update',
+            'users' => $users
+        ]);
     }
 
     public function getUser(User $user)

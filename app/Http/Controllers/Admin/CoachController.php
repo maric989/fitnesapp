@@ -53,7 +53,6 @@ class CoachController extends Controller
             'coach' => $coach,
             'manage_title' => 'Edit Coach',
             'action_route' => 'admin.coach.update',
-
         ]);
     }
 

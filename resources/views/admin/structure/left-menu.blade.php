@@ -30,7 +30,7 @@
             <div class="menu-icon transactions-icon active-icon absolute"></div>
             <div class="text">Transactions</div>
         </a>
-        <a href="/admin" class="admin-left-menu-option flex v-align-center relative">
+        <a href="{{ route('admin.users.paginate') }}" class="admin-left-menu-option flex v-align-center relative">
             <div class="menu-icon users-icon absolute"></div>
             <div class="menu-icon users-icon active-icon absolute"></div>
             <div class="text">Users</div>
