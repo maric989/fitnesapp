@@ -4,11 +4,11 @@
 @endsection
 <div class="table full data-grid">
     <div class="table-row head bold">
-        <div class="table-cell program-list-image-column"></div>
         <div class="table-cell semi-bold">Name</div>
         <div class="table-cell semi-bold">Email</div>
         <div class="table-cell semi-bold">Country</div>
         <div class="table-cell semi-bold">Gender</div>
+        <div class="table-cell semi-bold">Status</div>
         <div class="table-cell semi-bold">Action</div>
     </div>
     @foreach($users as $user)
@@ -16,6 +16,8 @@
             <div class="table-cell v-align-middle">{{ $user->first_name }} {{ $user->last_name }}</div>
             <div class="table-cell v-align-middle">{{ $user->email }}</div>
             <div class="table-cell v-align-middle">{{ $user->country->name }}</div>
+            <div class="table-cell v-align-middle">{{ $user->gender }}</div>
+            <div class="table-cell v-align-middle">{{ $user->roles[0]->name }}</div>
             <div class="table-cell v-align-middle"></div>
         </a>
     @endforeach

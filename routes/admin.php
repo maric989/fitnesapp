@@ -36,7 +36,7 @@ Route::middleware(['isAdmin', 'auth'])->group(function () {
 
         Route::prefix('users')->group(function () {
             Route::get('/paginate', [UserController::class, 'paginateUsers'])->name('admin.users.paginate');
-            Route::prefix('{coach_id}')->group(function () {
+            Route::prefix('{user_id}')->group(function () {
                 Route::get('/', [UserController::class, 'getUser'])->name('admin.user.single');
                 Route::get('/edit', [UserController::class, 'editUser'])->name('admin.user.edit');
                 Route::post('/update', [UserController::class, 'updateUser'])->name('admin.user.update');
