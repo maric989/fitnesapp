@@ -67,10 +67,17 @@
     .lessons-list {
         padding-top: 40px;
         .first-lesson {
-            width: 75%;
+            width: calc(80% - 15px);
         }
         .second-lessons {
-            width: 20%;
+            width: calc(20% - 15px);
+            .second-lesson {
+                height: calc(50% - 15px);
+            }
+        }
+        .other-lesson {
+            margin-top: 30px;
+            width: calc(50% - 15px);
         }
         .lesson-list-image {
             border-radius: 15px;
@@ -86,11 +93,24 @@
         .play-normal {
             width: 99px;
             height: 99px;
-            background: url("/images/play-icon.png") no-repeat 100% 100%;
+            background: url("/images/play-icon.png") no-repeat;
+            background-size: 100%;
+            &.second {
+                width: 55px;
+                height: 55px;
+            }
+            &.other {
+                width: 80px;
+                height: 80px;
+            }
         }
         .lesson-data-top {
             top: 25px;
             left: 43px;
+            &.second {
+                top: 22px;
+                left: 21px;
+            }
             .additional-info-item {
                 font-size: 12px;
                 background: $mainGreen;
@@ -104,12 +124,6 @@
         .lesson-data-bottom {
             left: 43px;
             bottom: 40px;
-            .lesson-day {
-                font-size: 18px;
-                background: url("/images/calendar-icon.png") no-repeat left center;
-                color: #fff;
-                padding-left: 31px;
-            }
             .lesson-title {
                 padding-top: 25px;
                 font-size: 36px;
@@ -122,6 +136,20 @@
                 font-size: 14px;
                 padding-top: 20px;
             }
+            &.second {
+                left: 21px;
+                bottom: 33px;
+                .lesson-title {
+                    font-size: 20px;
+                    padding-top: 0;
+                }
+            }
+        }
+        .lesson-day {
+            font-size: 18px;
+            background: url("/images/calendar-icon.png") no-repeat left center;
+            color: #fff;
+            padding-left: 31px;
         }
     }
 }
