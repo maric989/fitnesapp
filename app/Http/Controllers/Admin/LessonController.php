@@ -44,7 +44,15 @@ class LessonController extends Controller
             $backRouteName = 'admin.program.get.single';
             $backRouteParam = $program->id;
         } else {
-            $programs = Program::all();
+            $programs = Program::with(['lessonDays' => function ($query) {
+                $query->whereNull('lesson_id');
+            }])->get();
+
+            if (!empty($programs)) {
+                foreach ($programs as $programData) {
+                    $programData->freeDays = json_encode($programData->lessonDays->pluck('day')->toArray());
+                }
+            }
         }
 
         $intensities = $this->facade->getIntensity();

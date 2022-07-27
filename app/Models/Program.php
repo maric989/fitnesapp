@@ -40,6 +40,11 @@ class Program extends Model
             ->withPivot('day');
     }
 
+    public function lessonDays()
+    {
+        return $this->hasMany(ProgramLessonDay::class, 'program_id', 'id');
+    }
+
     public function scopeWhereId($query, $id)
     {
         return $query->where('id', $id);

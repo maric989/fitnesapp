@@ -26,7 +26,7 @@
                                     <input type="hidden" name="program_id" value="{{ $program->id }}" />
                                     <input id="program_id" readonly value="{{ $program->title }}" />
                                 @elseif (!empty($programs))
-                                    <select name="program_id" id="program_id" class="@error('program_id') error @enderror">
+                                    <select name="program_id" id="program_id" class="@error('program_id') error @enderror" onchange="changeProgramSelection(this.value)">
                                         <option value="">Select program</option>
                                         @foreach($programs as $oneProgram)
                                             <option value="{{ $oneProgram->id }}" @if(old('program_id') == $oneProgram->id) selected @endif>{{ $oneProgram->title }}</option>
@@ -54,11 +54,23 @@
                         </div>
                         @if(!empty($program))
                             <label for="duration" class="form-label block">Allocation</label>
-                            <div class="form-element form-duration-container" data-current-value="{{ old('day', $intensity->day ?? 1) }}" data-max-value="{{ $program->duration }}" data-available-values="{{ $days }}" data-field-id="day" data-handle-id="day-handle">
+                            <div class="form-element form-duration-container" data-current-value="{{ old('day', 1) }}" data-max-value="{{ $program->duration }}" data-available-values="{{ $days }}" data-field-id="day" data-handle-id="day-handle">
                                 <div class="form-duration">
                                     <div class="ui-slider-handle form-duration-handle" id="day-handle"></div>
                                 </div>
-                                <input name="day" id="day" value="{{ old('day', $intensity->day ?? 1) }}" />
+                                <input name="day" id="day" value="{{ old('day', 1) }}" />
+                            </div>
+                        @elseif (!empty($programs))
+                            <div id="show-allocation-program" @if(!old('program_id')) class="hide" @endif>
+                                <label for="duration" class="form-label block">Allocation</label>
+                                @foreach($programs as $selectedProgram)
+                                    <div class="form-element form-duration-container show-allocation-one-program" id="show-allocation-one-program_{{ $selectedProgram->id }}" data-current-value="{{ old('day', 1) }}" data-max-value="{{ $selectedProgram->duration }}" data-available-values="{{ $selectedProgram->freeDays }}" data-field-id="day_{{ $selectedProgram->id }}" data-handle-id="day_{{ $selectedProgram->id }}-handle">
+                                        <div class="form-duration">
+                                            <div class="ui-slider-handle form-duration-handle" id="day_{{ $selectedProgram->id }}-handle"></div>
+                                        </div>
+                                        <input id="day_{{ $selectedProgram->id }}" value="{{ old('day', 1) }}" class="show-allocation-one-program_day" />
+                                    </div>
+                                @endforeach
                             </div>
                         @endif
                         <label for="difficulty_id" class="form-label block">Difficulty</label>

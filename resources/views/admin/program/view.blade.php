@@ -14,6 +14,9 @@
                     'new_route' => 'admin.lesson.create',
                     'new_title' => '+ New  Lesson',
                     'new_route_params' => ['program_id' => $program->id],
+                    'action_buttons' => [
+                        ['title' => 'Add Lessons', 'route' => route('admin.program.add-lesson.get', ['program_id' => $program->id])]
+                    ],
                     'title_options' => [
                         ['title' => 'Edit', 'route' => 'admin.program.edit.single', 'route_parameters' => ['program_id' =>  $program->id]],
                     ]
@@ -73,7 +76,7 @@
                                         <div class="play-normal second"></div>
                                     </div>
                                     <div class="lesson-data-top second absolute">
-                                        <div class="lesson-day">Day {{ $program->lessons[2]->pivot->day }}</div>
+                                        <div class="lesson-day">Day {{ $program->lessons[1]->pivot->day }}</div>
                                     </div>
                                     <div class="lesson-data-bottom second absolute">
                                         <div class="lesson-title font-medium-weight">{{ $program->lessons[1]->title }}</div>

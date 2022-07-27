@@ -59,5 +59,17 @@ $('document').ready(function () {
             }
         });
     });
-
 });
+
+function changeProgramSelection(selectedProgram)
+{
+    $('#show-allocation-program').addClass('hide');
+    $('.show-allocation-one-program').addClass('hide');
+    $('.show-allocation-one-program_day').removeAttr('name');
+
+    if (selectedProgram) {
+        $('#show-allocation-program').removeClass('hide');
+        $('#show-allocation-one-program_' + selectedProgram).removeClass('hide');
+        $('#day_' + selectedProgram).attr('name', 'day');
+    }
+}

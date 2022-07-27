@@ -33,6 +33,11 @@
                         </div>
                     </div>
                 @endif
+                @if (isset($action_buttons))
+                    @foreach($action_buttons as $actionButton)
+                            <a href="{{ $actionButton['route'] }}" class="admin-new-item action-item-button uppercase flex v-align-center bold">{{ $actionButton['title'] }}</a>
+                    @endforeach
+                @endif
                 @if(isset($new_route))
                     <a href="{{ route($new_route, $new_route_params ?? []) }}" class="admin-new-item uppercase flex v-align-center bold">{{ $new_title }}</a>
                 @endif
