@@ -2,7 +2,6 @@
 
 namespace App\Http\Requests;
 
-use App\Rules\ProgramLessonFreeDayRule;
 use Illuminate\Foundation\Http\FormRequest;
 
 /**
@@ -16,7 +15,7 @@ use Illuminate\Foundation\Http\FormRequest;
  * @property $day
  * @property $cover_image
  */
-class LessonStoreRequest extends FormRequest
+class LessonUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -44,7 +43,7 @@ class LessonStoreRequest extends FormRequest
             'short_description' => ['nullable'],
             'full_description' => ['required'],
 //            'day' => ['nullable', 'integer', new ProgramLessonFreeDayRule($this->program_id)], // @TODO check program_id is not required
-            'cover_image' => ['required','mimes:jpg,jpeg','max:2048'],
+            'cover_image' => ['nullable', 'mimes:jpg,jpeg', 'max:2048'],
             'program_id' => ['nullable'],
         ];
     }

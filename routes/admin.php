@@ -30,7 +30,7 @@ Route::middleware(['isAdmin', 'auth'])->group(function () {
             Route::get('/paginate', [LessonController::class, 'paginateLessons'])->name('admin.lessons.paginate');
             Route::prefix('{lesson_id}')->group(function () {
                 Route::get('/edit', [LessonController::class, 'editLesson'])->name('admin.lesson.edit');
-                Route::put('/', [LessonController::class, 'updateLesson'])->name('admin.lesson.update');
+                Route::post('/', [LessonController::class, 'updateLesson'])->name('admin.lesson.update');
             });
         });
 

@@ -38,7 +38,7 @@
         </div>
     </div>
 
-    @if($program->lessons)
+    @if($program->lessons->count() > 0)
         <div class="program-view-lessons">
             <div class="title semi-bold">Lessons</div>
             <div class="lessons-list">

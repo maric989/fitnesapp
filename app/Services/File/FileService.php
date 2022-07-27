@@ -66,6 +66,21 @@ class FileService
         ]);
     }
 
+    public function updateLessonCoverImage(Lesson $lesson, UploadedFile $file)
+    {
+        $path = sprintf($this->config['lesson']['cover_image']['store-path'] , $lesson->id);
+        $fileName = $this->generateName($file);
+        Image::make($file)->save($path . '/'. $fileName);
+        File::where('id', $lesson->cover_image_id)->delete();
+
+        return File::create([
+            'size' => $file->getSize(),
+            'name' => $fileName,
+            'type' => $file->getMimeType(),
+            'full_path' => sprintf($this->config['lesson']['cover_image']['store-path'], $lesson->id, $fileName)
+        ]);
+    }
+
     public function addCoachProfileImage(Coach $coach, UploadedFile $file)
     {
         $path = sprintf($this->config['coach']['profile_picture']['store-path'] , $coach->id);

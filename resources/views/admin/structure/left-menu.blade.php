@@ -15,7 +15,7 @@
             <div class="menu-icon programs-icon active-icon absolute"></div>
             <div class="text">Programs</div>
         </a>
-        <a href="{{ route('admin.lessons.paginate') }}" class="admin-left-menu-option flex v-align-center relative">
+        <a href="{{ route('admin.lessons.paginate') }}" class="admin-left-menu-option flex v-align-center relative {{ Request::is('admin/lessons') || Request::is('admin/lessons/*') ? 'active' : '' }}">
             <div class="menu-icon lessons-icon absolute"></div>
             <div class="menu-icon lessons-icon active-icon absolute"></div>
             <div class="text">Lessons</div>
