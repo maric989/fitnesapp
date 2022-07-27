@@ -4,7 +4,9 @@ namespace App\Services\Program\Facade;
 
 use App\Http\Requests\ProgramStoreRequest;
 use App\Models\File;
+use App\Models\Lesson;
 use App\Models\Program;
+use App\Models\ProgramLessonDay;
 use App\Services\AbstractAdminFacade;
 use App\Services\AdminFacadeInterface;
 use Illuminate\Pagination\LengthAwarePaginator;
@@ -37,5 +39,20 @@ class AdminProgramFacade extends AbstractAdminFacade implements AdminFacadeInter
         $program->update([
             'cover_id' => $coverImage->id
         ]);
+    }
+
+    public function getAvailableLesson(Program $program): LengthAwarePaginator
+    {
+        $takenLessons = ProgramLessonDay::where('program_id', $program->id)
+            ->whereNotNull('lesson_id')
+            ->pluck('lesson_id')
+            ->toArray();
+
+        return Lesson::whereNotIn('id', $takenLessons)->paginate();
+    }
+
+    public function getProgramWithData(int $programId)
+    {
+        return Program::whereId($programId)->with('lessons')->programData()->first();
     }
 }

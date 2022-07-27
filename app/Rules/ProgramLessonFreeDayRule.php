@@ -7,7 +7,7 @@ use Illuminate\Contracts\Validation\Rule;
 
 class ProgramLessonFreeDayRule implements Rule
 {
-    protected $programId;
+    protected int $programId;
 
     /**
      * Create a new rule instance.

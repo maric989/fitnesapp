@@ -21,6 +21,8 @@ Route::middleware(['isAdmin', 'auth'])->group(function () {
                 Route::get('/',[ProgramController::class, 'getProgram'])->name('admin.program.get.single');
                 Route::get('/edit',[ProgramController::class, 'editProgram'])->name('admin.program.edit.single');
                 Route::post('/',[ProgramController::class, 'updateProgram'])->name('admin.program.update.single');
+                Route::get('/add-lesson', [ProgramController::class, 'addLesson'])->name('admin.program.add-lesson.get');
+                Route::post('/add-lesson', [ProgramController::class, 'storeLesson'])->name('admin.program.add-lesson.store');
             });
         });
 

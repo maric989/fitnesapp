@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ProgramAddLessonStoreRequest;
 use App\Http\Requests\ProgramStoreRequest;
 use App\Http\Requests\ProgramUpdateRequest;
 use App\Models\Program;
@@ -71,7 +72,9 @@ class ProgramController extends Controller
 
     public function getProgram(int $programId)
     {
-        return view('admin.program.view', ['program' => Program::whereId($programId)->with('lessons')->programData()->first()]);
+        return view('admin.program.view')->with([
+            'program' => $this->facade->getProgramWithData($programId)
+        ]);
     }
 
     public function editProgram(int $programId)
@@ -114,6 +117,30 @@ class ProgramController extends Controller
             $coverImage = $fileService->updateProgramCoverImage($program, $request->cover_image);
             $this->facade->updateProgramCoverImage($program, $coverImage);
         }
+
+        return back();
+    }
+
+    public function addLesson(int $programId)
+    {
+        $program = Program::find($programId);
+        $availableLesson = $this->facade->getAvailableLesson($program);
+        $freeDays = ProgramLessonDay::programFreeDays($program->id)->pluck('day')->toArray();
+
+        return view('admin.program.add-lessons')->with([
+            'program' => $program,
+            'lessons' => $availableLesson,
+            'free_days' => $freeDays
+        ]);
+    }
+
+    public function storeLesson(ProgramAddLessonStoreRequest $request, int $programId)
+    {
+        ProgramLessonDay::where('program_id', $programId)
+            ->where('day', $request->day)
+            ->update([
+                'lesson_id' => $request->lesson_id,
+            ]);
 
         return back();
     }
