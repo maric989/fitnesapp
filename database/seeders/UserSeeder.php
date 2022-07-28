@@ -25,7 +25,7 @@ class UserSeeder extends Seeder
             'first_name' => 'admin',
             'last_name' => 'admin',
             'gender' => UserGenderEnum::MALE,
-            'email' => 'admin@myaura.com',
+            'email' => 'admin@myaura.io',
             'birthday' => '1986-01-01',
             'password' => Hash::make('password'),
             'country_id' => $ee->id
