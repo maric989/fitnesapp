@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\LessonListFilterRequest;
 use App\Http\Requests\LessonStoreRequest;
 use App\Http\Requests\LessonUpdateRequest;
 use App\Models\Lesson;
@@ -21,9 +22,9 @@ class LessonController extends Controller
         $this->facade = $adminLessonFacade;
     }
 
-    public function paginateLessons()
+    public function paginateLessons(LessonListFilterRequest $request)
     {
-        $lessons = $this->facade->getListPaginated();
+        $lessons = $this->facade->getListPaginated($request->validated());
 
         return view('admin.lesson.paginate')->with([
             'lessons' => $lessons

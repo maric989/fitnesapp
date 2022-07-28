@@ -6,5 +6,5 @@ use Illuminate\Pagination\LengthAwarePaginator;
 
 interface AdminFacadeInterface
 {
-    public function getListPaginated(): LengthAwarePaginator;
+    public function getListPaginated(?array $filters): LengthAwarePaginator;
 }

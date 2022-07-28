@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProgramAddLessonStoreRequest;
+use App\Http\Requests\ProgramsListFilterRequest;
 use App\Http\Requests\ProgramStoreRequest;
 use App\Http\Requests\ProgramUpdateRequest;
 use App\Models\Program;
@@ -22,7 +23,7 @@ class ProgramController extends Controller
         $this->facade = $adminProgramFacade;
     }
 
-    public function paginatePrograms(Request $request)
+    public function paginatePrograms(ProgramsListFilterRequest $request)
     {
         $view = 'card';
         if (isset($request->view_mode)) {
@@ -31,7 +32,7 @@ class ProgramController extends Controller
         } else if ($request->cookie('view_mode')) {
             $view = $request->cookie('view_mode');
         }
-        $programs = $this->facade->getListPaginated();
+        $programs = $this->facade->getListPaginated($request->validated());
 
         return view('admin.program.paginate', ['programs' => $programs, 'view' => $view]);
     }

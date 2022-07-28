@@ -15,9 +15,26 @@ class AdminProgramFacade extends AbstractAdminFacade implements AdminFacadeInter
 {
     const PROGRAMS_PER_PAGE_ADMIN = 10;
 
-    public function getListPaginated(): LengthAwarePaginator
+    public function getListPaginated(?array $filters): LengthAwarePaginator
     {
-        return Program::programData()->paginate(self::PROGRAMS_PER_PAGE_ADMIN);
+        $programs = Program::programData();
+
+        if (isset($filters['s'])) {
+            $programs = $programs->where('title', 'LIKE', '%' . $filters['s'] . '%');
+        }
+        if (isset($filters['focus_id'])) {
+            $programs = $programs->where('focus_id', $filters['focus_id']);
+        }
+
+        if (isset($filters['difficulty_id'])) {
+            $programs = $programs->where('difficulty_id', $filters['difficulty_id']);
+        }
+
+        if (isset($filters['intensity_id'])) {
+            $programs = $programs->where('intensity_id', $filters['intensity_id']);
+        }
+
+        return $programs->paginate(self::PROGRAMS_PER_PAGE_ADMIN);
     }
 
     public function createProgram(ProgramStoreRequest $request): Program

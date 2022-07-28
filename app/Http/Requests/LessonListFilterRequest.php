@@ -5,12 +5,12 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 
 /**
- * @property string s
- * @property string focus_id
- * @property string difficulty_id
- * @property string intensity_id
+ * @property string $title
+ * @property integer $difficulty_id
+ * @property integer $intensity_id
+ * @property integer $coach_id
  */
-class ProgramsListFilterRequest extends FormRequest
+class LessonListFilterRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -30,10 +30,10 @@ class ProgramsListFilterRequest extends FormRequest
     public function rules()
     {
         return [
-            's' => ['nullable', 'string'],
-            'focus_id' => ['nullable', 'integer', 'exists:focuses,id'],
+            'title' => ['nullable', 'string'],
             'difficulty_id' => ['nullable', 'integer', 'exists:difficulties,id'],
-            'intensity_id' => ['nullable', 'integer', 'exists:intensities'],
+            'intensity_id' => ['nullable', 'integer', 'exists:intensities,id'],
+            'coach_id' => ['nullable', 'integer', 'exists:coaches,id'],
         ];
     }
 }

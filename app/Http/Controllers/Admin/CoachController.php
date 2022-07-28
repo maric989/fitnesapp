@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CoachListFilterRequest;
 use App\Http\Requests\CoachStoreRequest;
 use App\Http\Requests\CoachUpdateRequest;
 use App\Models\Coach;
@@ -19,9 +20,9 @@ class CoachController extends Controller
         $this->facade = $adminCoachFacade;
     }
 
-    public function paginateCoaches()
+    public function paginateCoaches(CoachListFilterRequest $request)
     {
-        $coaches = $this->facade->getListPaginated();
+        $coaches = $this->facade->getListPaginated($request->validated());
 
         return view('admin.coach.paginate')->with([
             'coaches' => $coaches

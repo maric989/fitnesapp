@@ -17,7 +17,7 @@ class UserController extends Controller
 
     public function paginateUsers()
     {
-        $users = $this->facade->getListPaginated();
+        $users = $this->facade->getListPaginated([]);
 
         return view('admin.users.paginate')->with([
             'manage_title' => 'Edit Coach',

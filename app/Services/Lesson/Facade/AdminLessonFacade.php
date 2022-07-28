@@ -11,9 +11,27 @@ use Illuminate\Pagination\LengthAwarePaginator;
 
 class AdminLessonFacade extends AbstractAdminFacade implements AdminFacadeInterface
 {
-    public function getListPaginated(): LengthAwarePaginator
+    public function getListPaginated(?array $filters): LengthAwarePaginator
     {
-        return Lesson::with('programs')->paginate();
+        $lessons = Lesson::with('programs');
+
+        if (isset($filters['title'])) {
+            $lessons = $lessons->where('title', 'LIKE', '%' . $filters['title'] . '%');
+        }
+
+        if (isset($filters['difficulty_id'])) {
+            $lessons = $lessons->where('difficulty_id', $filters['difficulty_id']);
+        }
+
+        if (isset($filters['intensity_id'])) {
+            $lessons = $lessons->where('intensity_id', $filters['intensity_id']);
+        }
+
+        if (isset($filters['coach_id'])) {
+            $lessons = $lessons->where('coach_id', $filters['coach_id']);
+        }
+
+        return $lessons->paginate();
     }
 
     public function storeLesson(LessonStoreRequest $request)

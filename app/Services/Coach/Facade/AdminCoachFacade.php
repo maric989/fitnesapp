@@ -5,10 +5,12 @@ namespace App\Services\Coach\Facade;
 use App\Http\Requests\CoachStoreRequest;
 use App\Models\Coach;
 use App\Models\File;
+use App\Services\AdminFacadeInterface;
+use Illuminate\Pagination\LengthAwarePaginator;
 
-class AdminCoachFacade
+class AdminCoachFacade implements AdminFacadeInterface
 {
-    public function getListPaginated()
+    public function getListPaginated(?array $filters): LengthAwarePaginator
     {
         return Coach::paginate();
     }
