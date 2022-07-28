@@ -7,14 +7,14 @@ use Illuminate\Contracts\Validation\Rule;
 
 class ProgramLessonFreeDayRule implements Rule
 {
-    protected int $programId;
+    protected int|null $programId;
 
     /**
      * Create a new rule instance.
      *
      * @return void
      */
-    public function __construct(int $programId)
+    public function __construct(?int $programId)
     {
         $this->programId = $programId;
     }

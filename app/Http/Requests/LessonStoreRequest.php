@@ -43,7 +43,7 @@ class LessonStoreRequest extends FormRequest
             'difficulty_id' => ['required', 'integer'],
             'short_description' => ['nullable'],
             'full_description' => ['required'],
-//            'day' => ['nullable', 'integer', new ProgramLessonFreeDayRule($this->program_id)], // @TODO check program_id is not required
+            'day' => ['nullable', 'integer', new ProgramLessonFreeDayRule($this->program_id)],
             'cover_image' => ['required','mimes:jpg,jpeg','max:2048'],
             'program_id' => ['nullable'],
         ];

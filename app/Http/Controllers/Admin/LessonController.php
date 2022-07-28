@@ -81,8 +81,10 @@ class LessonController extends Controller
         $this->facade->updateLessonCoverImage($lesson, $coverImage);
 
         if ($request->has('program_id') && !empty($request->program_id)) {
-            ProgramLessonDay::where('program_id', $request->program_id)->where('day', $request->day)->update([
-                'lesson_id' => $lesson->id
+            ProgramLessonDay::where('program_id', $request->program_id)
+                ->where('day', $request->day)
+                ->update([
+                    'lesson_id' => $lesson->id
             ]);
             $returnRoute = route('admin.program.get.single', ['program_id' => $request->program_id]);
         } else {
