@@ -131,7 +131,7 @@ class ProgramController extends Controller
         return view('admin.program.add-lessons')->with([
             'program' => $program,
             'lessons' => $availableLesson,
-            'free_days' => $freeDays
+            'free_days' => json_encode($freeDays),
         ]);
     }
 

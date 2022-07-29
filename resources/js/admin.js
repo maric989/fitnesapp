@@ -59,6 +59,16 @@ $('document').ready(function () {
             }
         });
     });
+
+    $('.add-lesson-action').click(function (e) {
+        let lessonId = $(this).data('lessonId');
+        $('#add-lesson-id').val(lessonId);
+        $('#add-lesson-popup').removeClass('hide');
+    });
+
+    $('#add-lesson-close').click(function (e) {
+        $('#add-lesson-popup').addClass('hide');
+    });
 });
 
 function changeProgramSelection(selectedProgram)
