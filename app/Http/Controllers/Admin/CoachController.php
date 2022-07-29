@@ -31,9 +31,10 @@ class CoachController extends Controller
 
     public function createCoach()
     {
-        return view('admin.coach.create')->with([
+        return view('admin.coach.manage')->with([
             'manage_title' => 'Create Coach',
-            'action_route' => 'admin.coach.store'
+            'action_route' => 'admin.coach.store',
+            'action_route_params' => []
         ]);
     }
 
@@ -50,10 +51,11 @@ class CoachController extends Controller
     {
         $coach = Coach::where('id', $coachId)->first();
 
-        return view('admin.coach.edit')->with([
+        return view('admin.coach.manage')->with([
             'coach' => $coach,
             'manage_title' => 'Edit Coach',
             'action_route' => 'admin.coach.update',
+            'action_route_params' => ['coach_id' => $coach->id],
         ]);
     }
 

@@ -15,7 +15,7 @@
                     @endforeach
                 </div>
             @endif
-            <form action="{{ route($action_route) }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route($action_route, $action_route_params) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="flex space-between">
                     <div class="admin-manage-form-side">
@@ -25,11 +25,14 @@
                         </div>
                         <label for="about" class="form-label block">Overview</label>
                         <div class="form-element">
-                            <textarea name="about" id="about" class="admin-small-textarea @error('about') error @enderror" placeholder="Insert program short description (max. 250 characters)">{{ old('about', $coach->about ?? null) }}</textarea>
+                            <textarea name="about" id="about" class="admin-small-textarea @error('about') error @enderror" placeholder="Insert coach short description (max. 250 characters)">{{ old('about', $coach->about ?? null) }}</textarea>
                         </div>
                         <label for="experience" class="form-label block">Experience</label>
-                        <div class="form-element">
-                            <input type="number" name="experience" id="experience" value="{{ old('experience', $coach->experience ?? null) }}" class="@error('experience') error @enderror" />
+                        <div class="form-element form-duration-container" data-current-value="{{ old('experience', $coach->experience ?? 1) }}" data-max-value="30" data-field-id="duration" data-handle-id="duration-handle" data-unit="years">
+                            <div class="form-duration">
+                                <div class="ui-slider-handle form-duration-handle" id="duration-handle"></div>
+                            </div>
+                            <input name="experience" id="duration" value="{{ old('experience', $coach->experience ?? 1) }}" />
                         </div>
                     </div>
                     <div class="admin-manage-form-side">
@@ -37,11 +40,11 @@
                         <div class="form-element">
                             <input name="last_name" id="last_name" value="{{ old('last_name', $coach->last_name ?? null) }}" class="@error('last_name') error @enderror" />
                         </div>
-                        <label for="profile_picture" class="form-label block">Coach profile image (16:9 image ratio)</label>
+                        <label for="profile_picture" class="form-label block">Coach profile image (1:1 image ratio)</label>
                         <div class="form-element">
                             <div
                                 class="upload-file-container flex v-align-center h-align-center pointer"
-                                @if(isset($coach) && !empty($coach->coverPhoto)) style="background-image: url('{{ $program->coverPhoto->full_path }}')" @endif>
+                                @if(isset($coach) && !empty($coach->profileImage)) style="background-image: url('{{ $coach->profileImage->full_path }}')" @endif>
                                 <input type="file" name="profile_picture" id="profile_picture" class="input-file" />
                                 <div class="upload-file-content">
                                     Choose a file
@@ -56,7 +59,7 @@
                 </div>
                 <div class="form-buttons flex h-align-center">
                     <div class="form-button-content">
-                        <a href="{{ route('admin.program.paginate') }}" class="button cancel link-button flex v-align-center">Cancel</a>
+                        <a href="{{ route('admin.coach.paginate') }}" class="button cancel link-button flex v-align-center">Cancel</a>
                     </div>
                     <div class="form-button-content">
                         <input type="submit" value="Save" class="button" />

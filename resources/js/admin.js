@@ -24,6 +24,10 @@ $('document').ready(function () {
         let handleId = $(this).data('handleId');
         let maxValue = $(this).data('maxValue');
         let availableValues = $(this).data('availableValues');
+        let unit = $(this).data('unit');
+        if (!unit) {
+            unit = 'days';
+        }
         $('#' + fieldId).addClass('hide');
 
         $(this).children('.form-duration').slider({
@@ -31,7 +35,7 @@ $('document').ready(function () {
             max: maxValue,
             value: currentValue,
             create: function() {
-                $('#' + handleId).html('<span>' + $( this ).slider( "value" ) + ' days</span>');
+                $('#' + handleId).html('<span>' + $( this ).slider( "value" ) + ' ' + unit + '</span>');
                 if (availableValues) {
                     let indexValue = availableValues.findIndex(x => x === $( this ).slider( "value" ));
                     if (indexValue > -1) {
@@ -44,7 +48,7 @@ $('document').ready(function () {
                 }
             },
             slide: function( event, ui ) {
-                $('#' + handleId).html('<span>' + ui.value + ' days</span>');
+                $('#' + handleId).html('<span>' + ui.value + ' ' + unit + '</span>');
                 $('#' + fieldId).val(ui.value);
                 if (availableValues) {
                     let indexValue = availableValues.findIndex(x => x === ui.value);

@@ -20,7 +20,7 @@
             <div class="menu-icon lessons-icon active-icon absolute"></div>
             <div class="text">Lessons</div>
         </a>
-        <a href="{{ route('admin.coach.paginate') }}" class="admin-left-menu-option flex v-align-center relative">
+        <a href="{{ route('admin.coach.paginate') }}" class="admin-left-menu-option flex v-align-center relative {{ Request::is('admin/coaches') || Request::is('admin/coaches/*') ? 'active' : '' }}">
             <div class="menu-icon coaches-icon absolute"></div>
             <div class="menu-icon coaches-icon active-icon absolute"></div>
             <div class="text">Coaches</div>
@@ -30,7 +30,7 @@
             <div class="menu-icon transactions-icon active-icon absolute"></div>
             <div class="text">Transactions</div>
         </a>
-        <a href="{{ route('admin.users.paginate') }}" class="admin-left-menu-option flex v-align-center relative">
+        <a href="{{ route('admin.users.paginate') }}" class="admin-left-menu-option flex v-align-center relative {{ Request::is('admin/users') || Request::is('admin/users/*') ? 'active' : '' }}">
             <div class="menu-icon users-icon absolute"></div>
             <div class="menu-icon users-icon active-icon absolute"></div>
             <div class="text">Users</div>
