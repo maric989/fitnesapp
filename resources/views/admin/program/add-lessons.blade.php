@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="{{ mix('/css/admin/manage-form.css') }}" />
 @endsection
 @section('admin-container')
-    @include('admin/common/search-bar', ['placeholder' => 'Search Programs..'])
+    @include('admin/common/search-bar', ['placeholder' => 'Search Programs..', 'action' => route('admin.program.paginate')])
     @include('admin/common/title-bar', ['title' => 'Select from available lessons', 'back_link' => 'admin.program.get.single', 'back_link_title' => 'Back to Program', 'back_link_parameters' => $program->id])
 
     @if($lessons->count() > 0)

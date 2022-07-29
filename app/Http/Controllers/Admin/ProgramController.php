@@ -33,8 +33,32 @@ class ProgramController extends Controller
             $view = $request->cookie('view_mode');
         }
         $programs = $this->facade->getListPaginated($request->validated());
+        $filters = [
+            [
+                'title' => 'Focus',
+                'name' => 'focus_id',
+                'options' => $this->facade->getFocuses()->toArray(),
+                'selected' => $request->focus_id,
+            ],
+            [
+                'title' => 'Intensity',
+                'name' => 'intensity_id',
+                'options' => $this->facade->getIntensity()->toArray(),
+                'selected' => $request->intensity_id,
+            ],
+            [
+                'title' => 'Difficulty',
+                'name' => 'difficulty_id',
+                'options' => $this->facade->getDifficulty()->toArray(),
+                'selected' => $request->difficulty_id,
+            ],
+        ];
 
-        return view('admin.program.paginate', ['programs' => $programs, 'view' => $view]);
+        return view('admin.program.paginate', [
+            'programs' => $programs,
+            'view' => $view,
+            'filters' => $filters,
+        ]);
     }
 
     public function createProgram()

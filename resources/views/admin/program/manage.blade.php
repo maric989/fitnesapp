@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="{{ mix('/css/admin/manage-form.css') }}" />
 @endsection
 @section('admin-container')
-    @include('admin/common/search-bar', ['placeholder' => 'Search Programs..'])
+    @include('admin/common/search-bar', ['placeholder' => 'Search Programs..', 'action' => route('admin.program.paginate')])
     @include('admin/common/title-bar', ['title' => $manage_title, 'back_link' => 'admin.program.paginate', 'back_link_title' => 'Back to Programs'])
     <div class="admin-manage-form-container">
         <div class="admin-manage-form">

@@ -6,7 +6,7 @@
 @section('admin-container')
     <div class="program-view-header" style="background-image: url('{{ $program->coverPhoto->full_path }}');">
         <div class="program-view-header-bg">
-            @include('admin/common/search-bar', ['placeholder' => 'Search Programs..', 'theme_color' => 'white'])
+            @include('admin/common/search-bar', ['placeholder' => 'Search Programs..', 'theme_color' => 'white', 'action' => route('admin.program.paginate')])
             @include('admin/common/title-bar',
                 [
                     'title' => $program->title,

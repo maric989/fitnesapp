@@ -33,7 +33,7 @@ class ProgramsListFilterRequest extends FormRequest
             's' => ['nullable', 'string'],
             'focus_id' => ['nullable', 'integer', 'exists:focuses,id'],
             'difficulty_id' => ['nullable', 'integer', 'exists:difficulties,id'],
-            'intensity_id' => ['nullable', 'integer', 'exists:intensities'],
+            'intensity_id' => ['nullable', 'integer', 'exists:intensities,id'],
         ];
     }
 }

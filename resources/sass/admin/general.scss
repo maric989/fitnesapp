@@ -238,6 +238,36 @@ body {
     }
 }
 
+.admin-filter-bar {
+    padding: 20px 0;
+    .admin-filter-bar-content {
+        background: #fff;
+        border-radius: 7px;
+        padding: 6px;
+        .admin-filter-options-container {
+            padding: 0 10px;
+            .admin-filter-option {
+                height: 53px;
+                padding: 0 10px;
+                select {
+                    border: 0;
+                    background: none;
+                    width: 150px;
+                }
+            }
+        }
+        .admin-filter-button {
+            border-left: 1px solid #9B9DA1;
+            padding-left: 20px;
+            height: 53px;
+            .button {
+                height: 29px;
+                font-size: 12px;
+            }
+        }
+    }
+}
+
 .program-list-container {
     padding-top: 20px;
 }
