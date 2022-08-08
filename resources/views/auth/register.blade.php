@@ -1,59 +1,75 @@
-<x-guest-layout>
-    <x-auth-card>
-        <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
-        </x-slot>
-
-        <!-- Validation Errors -->
-        <x-auth-validation-errors class="mb-4" :errors="$errors" />
-
+@extends('structure/auth-container')
+@section('auth-container')
+    <div class="auth-form-title center">Sign in to your account</div>
+    <div>
+        @if($errors->any())
+            <div class="error-message">
+                @foreach ($errors->all() as $error)
+                    <div>{{ $error }}</div>
+                @endforeach
+            </div>
+        @endif
         <form method="POST" action="{{ route('register') }}">
             @csrf
-
-            <!-- Name -->
-            <div>
-                <x-label for="name" :value="__('Name')" />
-
-                <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus />
+            <label for="first_name" class="form-label block">First name</label>
+            <div class="form-element">
+                <input name="first_name" id="first_name" value="{{ old('first_name') }}" class="@error('first_name') error @enderror" />
             </div>
-
-            <!-- Email Address -->
-            <div class="mt-4">
-                <x-label for="email" :value="__('Email')" />
-
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
+            <label for="last_name" class="form-label block">Last name</label>
+            <div class="form-element">
+                <input name="last_name" id="last_name" value="{{ old('last_name') }}" class="@error('last_name') error @enderror" />
             </div>
-
-            <!-- Password -->
-            <div class="mt-4">
-                <x-label for="password" :value="__('Password')" />
-
-                <x-input id="password" class="block mt-1 w-full"
-                                type="password"
-                                name="password"
-                                required autocomplete="new-password" />
+            <label for="gender" class="form-label block">Gender</label>
+            <div class="form-element">
+                <select name="gender" id="gender" class="@error('gender') error @enderror">
+                    @foreach($genders as $gender)
+                        <option value="{{$gender}}">{{ucfirst($gender)}}</option>
+                    @endforeach
+                </select>
             </div>
-
-            <!-- Confirm Password -->
-            <div class="mt-4">
-                <x-label for="password_confirmation" :value="__('Confirm Password')" />
-
-                <x-input id="password_confirmation" class="block mt-1 w-full"
-                                type="password"
-                                name="password_confirmation" required />
+            <label for="country_id" class="form-label block">Country</label>
+            <div class="form-element">
+                <select name="country_id" id="country_id" class="@error('country_id') error @enderror">
+                    @foreach($countries as $country)
+                        <option value="{{$country->id}}">{{ucfirst($country->name)}}</option>
+                    @endforeach
+                </select>
             </div>
-
-            <div class="flex items-center justify-end mt-4">
-                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
-                    {{ __('Already registered?') }}
-                </a>
-
-                <x-button class="ml-4">
-                    {{ __('Register') }}
-                </x-button>
+            <label for="birthday" class="form-label block">Birthday</label>
+            <div class="form-element">
+                <input type="date" name="birthday" id="birthday" value="{{ old('birthday') }}" class="@error('birthday') error @enderror" />
+            </div>
+            <label for="email" class="form-label block">Email</label>
+            <div class="form-element">
+                <input name="email" id="email" value="{{ old('email') }}" placeholder="Enter username or email" class="@error('password') error @enderror" />
+            </div>
+            <label for="password" class="form-label block">Password</label>
+            <div class="form-element">
+                <input type="password" id="password" name="password" placeholder="Enter password" class="@error('password') error @enderror" />
+            </div>
+            <label for="password_confirmation" class="form-label block">Password Repeat</label>
+            <div class="form-element">
+                <input type="password_confirmation" id="password_confirmation" name="password_confirmation" placeholder="Enter password" class="@error('password_confirmation') error @enderror" />
+            </div>
+            <div class="auth-option flex space-between">
+                <div>
+                    <div class="flex">
+                        <div class="form-element">
+                            <input type="checkbox" id="remember_me" name="remember_me" />
+                        </div>
+                        <label for="remember_me" class="remember block">Remember me</label>
+                    </div>
+                </div>
+                <div>
+                    <a href="">Forgot password?</a>
+                </div>
+            </div>
+            <div class="auth-option auth-button">
+                <input type="submit" value="Log in" class="button" />
+            </div>
+            <div class="auth-option center">
+                New user? <a href="{{ route('register') }}">Register</a>
             </div>
         </form>
-    </x-auth-card>
-</x-guest-layout>
+    </div>
+@endsection
