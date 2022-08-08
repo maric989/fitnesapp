@@ -8,7 +8,7 @@
         <div class="flex">
             <div class="admin-title semi-bold {{ $theme_color ?? '' }}">{{ $title }}</div>
             @if(isset($title_options) && !empty($title_options))
-                <div class="admin-title-tree-dots relative pointer">
+                <div class="admin-title-tree-dots relative pointer {{ $theme_color ?? '' }}">
                     <div class="admin-title-menu absolute hide">
                         @foreach($title_options as $title_option)
                             <a href="{{ route($title_option['route'], $title_option['route_parameters']) }}" class="block">{{ $title_option['title'] }}</a>

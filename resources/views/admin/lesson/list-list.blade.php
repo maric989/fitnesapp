@@ -11,7 +11,7 @@
         <div class="table-cell semi-bold">Lesson Belongs To</div>
     </div>
     @foreach($lessons as $lesson)
-        <a class="table-row body program-list-link" href="{{ route('admin.lesson.edit', ['lesson_id' => $lesson->id]) }}">
+        <a class="table-row body program-list-link" href="{{ route('admin.lesson.show', ['lesson_id' => $lesson->id]) }}">
             <div class="table-cell program-list-image-column">
                 <div style="background-image: url('{{ $lesson->coverImage->full_path }}')" class="program-list-image"></div>
             </div>

@@ -147,4 +147,17 @@ class LessonController extends Controller
 
         return back();
     }
+
+    public function showLesson(int $lessonId)
+    {
+        $backRouteName = 'admin.lessons.paginate';
+        $backRouteParam = null;
+        $lesson = Lesson::where('id', $lessonId)->with(['coverImage', 'difficulty', 'difficulty', 'coach.profileImage'])->first();
+
+        return view('admin.lesson.view')->with([
+            'lesson' => $lesson,
+            'back_route_name' => $backRouteName,
+            'back_route_param' => $backRouteParam,
+        ]);
+    }
 }

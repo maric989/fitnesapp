@@ -31,6 +31,7 @@ Route::middleware(['isAdmin', 'auth'])->group(function () {
             Route::post('/', [LessonController::class, 'storeLesson'])->name('admin.lesson.store');
             Route::get('/paginate', [LessonController::class, 'paginateLessons'])->name('admin.lessons.paginate');
             Route::prefix('{lesson_id}')->group(function () {
+                Route::get('/', [LessonController::class, 'showLesson'])->name('admin.lesson.show');
                 Route::get('/edit', [LessonController::class, 'editLesson'])->name('admin.lesson.edit');
                 Route::post('/', [LessonController::class, 'updateLesson'])->name('admin.lesson.update');
             });
@@ -50,6 +51,7 @@ Route::middleware(['isAdmin', 'auth'])->group(function () {
             Route::get('/', [CoachController::class, 'createCoach'])->name('admin.coach.create');
             Route::post('/', [CoachController::class, 'storeCoach'])->name('admin.coach.store');
             Route::prefix('{coach_id}')->group(function () {
+                Route::get('/', [CoachController::class, 'showCoach'])->name('admin.coach.show');
                 Route::get('/edit', [CoachController::class, 'editCoach'])->name('admin.coach.edit');
                 Route::post('/update', [CoachController::class, 'updateCoach'])->name('admin.coach.update');
             });

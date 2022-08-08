@@ -115,8 +115,11 @@ body {
         }
     }
     .admin-title-tree-dots {
-        background: url("/images/vertical-dots-white.png") no-repeat center;
+        background: url("/images/vertical-dots-white-dark.png") no-repeat center;
         width: 60px;
+        &.white {
+            background: url("/images/vertical-dots-white.png") no-repeat center;
+        }
         .admin-title-menu {
             left: 60px;
             background: #fff;
@@ -270,4 +273,53 @@ body {
 
 .program-list-container {
     padding-top: 20px;
+}
+
+.day-view {
+    font-size: 18px;
+    background: url("/images/calendar-icon.png") no-repeat left center;
+    color: #fff;
+    padding-left: 31px;
+}
+
+.level-view {
+    background-position: left center;
+    font-size: 18px;
+    background-repeat: no-repeat;
+    padding: 0 12px 0 25px;
+    background-image: url("/images/level-icon.png");
+}
+
+.tag-option {
+    font-size: 14px;
+    background: $mainGreen;
+    padding: 0 12px;
+    border-radius: 12px;
+    height: 23px;
+    margin-right: 10px;
+    color: #fff;
+}
+
+.images-overlay {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(180deg, rgba(45, 43, 39, 0) 0%, #2D2B27 100%);
+    border-radius: 15px;
+}
+
+.play-button {
+    width: 99px;
+    height: 99px;
+    background: url("/images/play-icon.png") no-repeat;
+    background-size: 100%;
+    &.medium {
+        width: 80px;
+        height: 80px;
+    }
+    &.small {
+        width: 55px;
+        height: 55px;
+    }
 }

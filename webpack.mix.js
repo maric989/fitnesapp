@@ -25,6 +25,8 @@ mix.sass('resources/sass/admin/program-card-list.scss', 'public/css/admin').vers
 mix.sass('resources/sass/admin/program-list-list.scss', 'public/css/admin').version();
 mix.sass('resources/sass/admin/coach-list.scss', 'public/css/admin').version();
 mix.sass('resources/sass/admin/program-view.scss', 'public/css/admin').version();
+mix.sass('resources/sass/admin/lesson-view.scss', 'public/css/admin').version();
+mix.sass('resources/sass/admin/coach-view.scss', 'public/css/admin').version();
 mix.sass('resources/sass/admin/paginator.scss', 'public/css/admin').version();
 mix.css('resources/css/jquery-ui.css', 'public/css/general/jquery-ui.css').version();
 

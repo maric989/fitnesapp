@@ -82,4 +82,16 @@ class CoachController extends Controller
 
         return back();
     }
+
+    public function showCoach(int $coachId)
+    {
+        $coach = Coach::where('id', $coachId)->first();
+
+        return view('admin.coach.view')->with([
+            'coach' => $coach,
+            'manage_title' => $coach->first_name . ' ' . $coach->last_name,
+            'action_route' => 'admin.coach.update',
+            'action_route_params' => ['coach_id' => $coach->id],
+        ]);
+    }
 }

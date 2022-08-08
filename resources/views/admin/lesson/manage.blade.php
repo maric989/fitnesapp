@@ -54,7 +54,7 @@
                         </div>
                         @if(!empty($program))
                             <label for="duration" class="form-label block">Allocation</label>
-                            <div class="form-element form-duration-container" data-current-value="{{ old('day', 1) }}" data-max-value="{{ $program->duration }}" data-available-values="{{ $days }}" data-field-id="day" data-handle-id="day-handle">
+                            <div class="form-element form-duration-container" data-current-value="{{ old('day', 1) }}" data-max-value="{{ $program->duration }}" data-available-values="{{ $days }}" data-field-id="day" data-handle-id="day-handle" data-is-unit-before="1" data-unit="Day">
                                 <div class="form-duration">
                                     <div class="ui-slider-handle form-duration-handle" id="day-handle"></div>
                                 </div>
@@ -64,7 +64,7 @@
                             <div id="show-allocation-program" @if(!old('program_id')) class="hide" @endif>
                                 <label for="duration" class="form-label block">Allocation</label>
                                 @foreach($programs as $selectedProgram)
-                                    <div class="form-element form-duration-container show-allocation-one-program" id="show-allocation-one-program_{{ $selectedProgram->id }}" data-current-value="{{ old('day', 1) }}" data-max-value="{{ $selectedProgram->duration }}" data-available-values="{{ $selectedProgram->freeDays }}" data-field-id="day_{{ $selectedProgram->id }}" data-handle-id="day_{{ $selectedProgram->id }}-handle">
+                                    <div class="form-element form-duration-container show-allocation-one-program" id="show-allocation-one-program_{{ $selectedProgram->id }}" data-current-value="{{ old('day', 1) }}" data-max-value="{{ $selectedProgram->duration }}" data-available-values="{{ $selectedProgram->freeDays }}" data-field-id="day_{{ $selectedProgram->id }}" data-handle-id="day_{{ $selectedProgram->id }}-handle" data-is-unit-before="1" data-unit="Day">
                                         <div class="form-duration">
                                             <div class="ui-slider-handle form-duration-handle" id="day_{{ $selectedProgram->id }}-handle"></div>
                                         </div>

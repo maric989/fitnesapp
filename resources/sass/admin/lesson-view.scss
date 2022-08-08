@@ -1,0 +1,58 @@
+@import "resources/sass/vars/color";
+
+.lesson-view-container {
+    padding-top: 40px;
+}
+.lesson-view-main-data {
+    width: 70%;
+    .lesson-view-image {
+        img {
+            border-radius: 15px;
+        }
+    }
+    .lesson-view-data {
+        padding-top: 35px;
+    }
+    .lesson-view-text {
+        padding-top: 40px;
+        font-size: 18px;
+    }
+}
+
+.lesson-side-data {
+    width: calc(30% - 53px);
+    .lesson-coach {
+        .image {
+            width: 115px;
+            img {
+                border-radius: 10px 0 0 10px;
+            }
+        }
+        .lesson-coach-data {
+            border-top: 1px solid #DBD8FC;
+            border-right: 1px solid #DBD8FC;
+            border-bottom: 1px solid #DBD8FC;
+            border-radius: 0 10px 10px 0;
+            background: #fff;
+            .lesson-coach-title {
+                color: #2D2B27;
+                font-size: 18px;
+                padding: 0 10px;
+                .lesson-coach-name {
+                    font-size: 24px;
+                    padding-bottom: 10px;
+                }
+            }
+            .lesson-coach-more-container {
+                width: 67px;
+            }
+            .lesson-coach-more {
+                border: 1px solid $mainGreen;
+                width: 37px;
+                height: 37px;
+                border-radius: 50%;
+                background: url("/images/chevron-down.png") no-repeat center center;
+            }
+        }
+    }
+}

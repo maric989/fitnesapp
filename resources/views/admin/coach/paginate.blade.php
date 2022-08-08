@@ -10,7 +10,7 @@
     @if($coaches)
         <div class="flex flex-wrap coach-list-container">
             @foreach($coaches as $coach)
-                <a href="{{ route('admin.coach.edit', ['coach_id' => $coach->id]) }}" class="block relative one-coach-list">
+                <a href="{{ route('admin.coach.show', ['coach_id' => $coach->id]) }}" class="block relative one-coach-list">
                     <div>
                         <img src="{{ $coach->profileImage->full_path }}" class="full block coach-list-image" />
                     </div>

@@ -39,4 +39,9 @@ class Lesson extends Model
     {
         return $this->programs()->pluck('title')->toArray();
     }
+
+    public function coach()
+    {
+        return $this->hasOne(Coach::class, 'id', 'coach_id');
+    }
 }

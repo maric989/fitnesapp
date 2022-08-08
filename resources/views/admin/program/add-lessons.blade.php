@@ -44,7 +44,7 @@
                     <form method="POST" action="{{ route('admin.program.add-lesson.store', ['program_id' => $program->id]) }}">
                         <input type="hidden" name="lesson_id" id="add-lesson-id" />
                         @csrf
-                        <div class="form-element form-duration-container" data-current-value="1" data-max-value="{{ $program->duration }}" data-available-values="{{ $free_days }}" data-field-id="day" data-handle-id="day-handle">
+                        <div class="form-element form-duration-container" data-current-value="1" data-max-value="{{ $program->duration }}" data-available-values="{{ $free_days }}" data-field-id="day" data-handle-id="day-handle" data-is-unit-before="1" data-unit="Day">
                             <div class="form-duration">
                                 <div class="ui-slider-handle form-duration-handle" id="day-handle"></div>
                             </div>
