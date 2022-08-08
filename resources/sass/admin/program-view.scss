@@ -72,7 +72,21 @@
         .second-lessons {
             width: calc(20% - 15px);
             .second-lesson {
-                height: calc(50% - 15px);
+                height: 50%;
+                .second-lesson-content-top {
+                    padding-bottom: 7px;
+                    height: calc(100% - 7px);
+                }
+                .second-lesson-content-bottom {
+                    padding-top: 7px;
+                    height: calc(100% - 7px);
+                }
+                .second-lesson-data {
+                    height: 100%;
+                    border-radius: 15px;
+                    background-position: top center;
+                    background-size: auto 100%;
+                }
             }
         }
         .other-lesson {

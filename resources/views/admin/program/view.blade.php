@@ -70,33 +70,35 @@
                     @if ($program->lessons->count() > 1)
                         <div class="second-lessons">
                             <div class="second-lesson">
-                                <a href="{{ route('admin.lesson.edit', $program->lessons[1]->id) }}" class="relative block">
-                                    <img src="{{ $program->lessons[1]->coverImage->full_path }}" class="block full lesson-list-image" />
-                                    <div class="images-lesson-overlay absolute flex v-align-center h-align-center">
-                                        <div class="play-normal second"></div>
-                                    </div>
-                                    <div class="lesson-data-top second absolute">
-                                        <div class="lesson-day">Day {{ $program->lessons[1]->pivot->day }}</div>
-                                    </div>
-                                    <div class="lesson-data-bottom second absolute">
-                                        <div class="lesson-title font-medium-weight">{{ $program->lessons[1]->title }}</div>
-                                    </div>
-                                </a>
-                            </div>
-                            @if ($program->lessons->count() > 2)
-                                <div class="second-lesson">
-                                    <a href="{{ route('admin.lesson.edit', $program->lessons[2]->id) }}" class="relative block">
-                                        <img src="{{ $program->lessons[2]->coverImage->full_path }}" class="block full lesson-list-image" />
+                                <div class="second-lesson-content-top">
+                                    <a href="{{ route('admin.lesson.edit', $program->lessons[1]->id) }}" class="second-lesson-data relative block" style="background-image: url('{{ $program->lessons[1]->coverImage->full_path }}')">
                                         <div class="images-lesson-overlay absolute flex v-align-center h-align-center">
                                             <div class="play-normal second"></div>
                                         </div>
                                         <div class="lesson-data-top second absolute">
-                                            <div class="lesson-day">Day {{ $program->lessons[2]->pivot->day }}</div>
+                                            <div class="lesson-day">Day {{ $program->lessons[1]->pivot->day }}</div>
                                         </div>
                                         <div class="lesson-data-bottom second absolute">
-                                            <div class="lesson-title font-medium-weight">{{ $program->lessons[2]->title }}</div>
+                                            <div class="lesson-title font-medium-weight">{{ $program->lessons[1]->title }}</div>
                                         </div>
                                     </a>
+                                </div>
+                            </div>
+                            @if ($program->lessons->count() > 2)
+                                <div class="second-lesson">
+                                    <div class="second-lesson-content-bottom">
+                                        <a href="{{ route('admin.lesson.edit', $program->lessons[2]->id) }}" class="second-lesson-data relative block" style="background-image: url('{{ $program->lessons[2]->coverImage->full_path }}')">
+                                            <div class="images-lesson-overlay absolute flex v-align-center h-align-center">
+                                                <div class="play-normal second"></div>
+                                            </div>
+                                            <div class="lesson-data-top second absolute">
+                                                <div class="lesson-day">Day {{ $program->lessons[2]->pivot->day }}</div>
+                                            </div>
+                                            <div class="lesson-data-bottom second absolute">
+                                                <div class="lesson-title font-medium-weight">{{ $program->lessons[2]->title }}</div>
+                                            </div>
+                                        </a>
+                                    </div>
                                 </div>
                             @endif
                         </div>
