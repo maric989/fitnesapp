@@ -85,7 +85,7 @@ class CoachController extends Controller
 
     public function showCoach(int $coachId)
     {
-        $coach = Coach::where('id', $coachId)->first();
+        $coach = Coach::where('id', $coachId)->with(['lessons'])->first();
 
         return view('admin.coach.view')->with([
             'coach' => $coach,

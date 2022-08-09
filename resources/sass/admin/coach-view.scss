@@ -1,9 +1,39 @@
+@import "resources/sass/vars/color";
+@import "resources/sass/admin/lessons-view-list";
+
 .coach-view-container {
     padding-top: 35px;
     .image {
         width: 40%;
+        img {
+            border-radius: 14px;
+        }
     }
     .coach-data {
         width: calc(60% - 70px);
+        .coach-option {
+            .coach-option-title {
+                font-size: 36px;
+                color: $mainGreen;
+            }
+            .coach-option-description {
+                font-size: 18px;
+                padding-top: 10px;
+            }
+        }
+        .coach-text {
+            padding-top: 48px;
+            .coach-about {
+                font-size: 24px;
+                padding-bottom: 20px;
+            }
+            .coach-bio {
+                font-size: 18px;
+            }
+        }
     }
+}
+
+.program-view-lessons {
+    padding: 50px 0 80px 0;
 }

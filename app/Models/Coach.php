@@ -26,4 +26,9 @@ class Coach extends Model
     {
         return $this->hasOne(File::class, 'id', 'profile_picture_id');
     }
+
+    public function lessons()
+    {
+        return $this->hasMany(Lesson::class, 'coach_id', 'id');
+    }
 }

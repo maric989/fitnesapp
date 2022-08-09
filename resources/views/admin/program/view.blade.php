@@ -46,7 +46,7 @@
             <div class="title semi-bold">Lessons</div>
             <div class="lessons-list">
                 <div class="flex space-between">
-                    <a class="first-lesson relative" href="{{ route('admin.lesson.edit', $program->lessons[0]->id) }}">
+                    <a class="first-lesson relative" href="{{ route('admin.lesson.show', $program->lessons[0]->id) }}">
                         <img src="{{ $program->lessons[0]->coverImage->full_path }}" class="block full lesson-list-image" />
                         <div class="images-lesson-overlay absolute flex v-align-center h-align-center">
                             <div class="play-normal"></div>
@@ -71,7 +71,7 @@
                         <div class="second-lessons">
                             <div class="second-lesson">
                                 <div class="second-lesson-content-top">
-                                    <a href="{{ route('admin.lesson.edit', $program->lessons[1]->id) }}" class="second-lesson-data relative block" style="background-image: url('{{ $program->lessons[1]->coverImage->full_path }}')">
+                                    <a href="{{ route('admin.lesson.show', $program->lessons[1]->id) }}" class="second-lesson-data relative block" style="background-image: url('{{ $program->lessons[1]->coverImage->full_path }}')">
                                         <div class="images-lesson-overlay absolute flex v-align-center h-align-center">
                                             <div class="play-normal second"></div>
                                         </div>
@@ -87,7 +87,7 @@
                             @if ($program->lessons->count() > 2)
                                 <div class="second-lesson">
                                     <div class="second-lesson-content-bottom">
-                                        <a href="{{ route('admin.lesson.edit', $program->lessons[2]->id) }}" class="second-lesson-data relative block" style="background-image: url('{{ $program->lessons[2]->coverImage->full_path }}')">
+                                        <a href="{{ route('admin.lesson.show', $program->lessons[2]->id) }}" class="second-lesson-data relative block" style="background-image: url('{{ $program->lessons[2]->coverImage->full_path }}')">
                                             <div class="images-lesson-overlay absolute flex v-align-center h-align-center">
                                                 <div class="play-normal second"></div>
                                             </div>
@@ -108,7 +108,7 @@
                     <div class="flex flex-wrap space-between more-lessons">
                         @foreach($program->lessons as $key => $lesson)
                             @if($key > 2)
-                                <a class="other-lesson relative" href="{{ route('admin.lesson.edit', $lesson->id) }}">
+                                <a class="other-lesson relative" href="{{ route('admin.lesson.show', $lesson->id) }}">
                                     <img src="{{ $lesson->coverImage->full_path }}" class="block full lesson-list-image" />
                                     <div class="images-lesson-overlay absolute flex v-align-center h-align-center">
                                         <div class="play-normal other"></div>

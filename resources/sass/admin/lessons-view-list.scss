@@ -1,0 +1,109 @@
+.program-view-lessons {
+    padding: 0 75px 80px 72px;
+    .title {
+        color: #0D1118;
+        font-size: 32px;
+    }
+    .lessons-list {
+        padding-top: 40px;
+        .first-lesson {
+            width: calc(80% - 15px);
+        }
+        .second-lessons {
+            width: calc(20% - 15px);
+            .second-lesson {
+                height: 50%;
+                .second-lesson-content-top {
+                    padding-bottom: 7px;
+                    height: calc(100% - 7px);
+                }
+                .second-lesson-content-bottom {
+                    padding-top: 7px;
+                    height: calc(100% - 7px);
+                }
+                .second-lesson-data {
+                    height: 100%;
+                    border-radius: 15px;
+                    background-position: top center;
+                    background-size: auto 100%;
+                }
+            }
+        }
+        .other-lesson {
+            margin-top: 30px;
+            width: calc(50% - 15px);
+        }
+        .lesson-list-image {
+            border-radius: 15px;
+        }
+        .images-lesson-overlay {
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(180deg, rgba(45, 43, 39, 0) 0%, #2D2B27 100%);
+            border-radius: 15px;
+        }
+        .play-normal {
+            width: 99px;
+            height: 99px;
+            background: url("/images/play-icon.png") no-repeat;
+            background-size: 100%;
+            &.second {
+                width: 55px;
+                height: 55px;
+            }
+            &.other {
+                width: 80px;
+                height: 80px;
+            }
+        }
+        .lesson-data-top {
+            top: 25px;
+            left: 43px;
+            &.second {
+                top: 22px;
+                left: 21px;
+            }
+            .additional-info-item {
+                font-size: 12px;
+                background: $mainGreen;
+                padding: 0 12px;
+                border-radius: 9px;
+                height: 18px;
+                margin-right: 10px;
+                color: #fff;
+            }
+        }
+        .lesson-data-bottom {
+            left: 43px;
+            bottom: 40px;
+            .lesson-title {
+                padding-top: 25px;
+                font-size: 36px;
+                color: #fff;
+                border-bottom: 2px solid $mainGreen;
+                display: inline-block;
+            }
+            .lesson-description {
+                color: #CCCCCC;
+                font-size: 14px;
+                padding-top: 20px;
+            }
+            &.second {
+                left: 21px;
+                bottom: 33px;
+                .lesson-title {
+                    font-size: 20px;
+                    padding-top: 0;
+                }
+            }
+        }
+        .lesson-day {
+            font-size: 18px;
+            background: url("/images/calendar-icon.png") no-repeat left center;
+            color: #fff;
+            padding-left: 31px;
+        }
+    }
+}
