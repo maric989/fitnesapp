@@ -1,0 +1,68 @@
+@import "resources/sass/vars/color";
+
+.settings-container {
+    padding-top: 30px;
+    .settings-side {
+        width: calc(50% - 20px);
+        .settings-option {
+            background-repeat: no-repeat;
+            background-position: 28px center;
+            color: #AAB2C8;
+            font-size: 24px;
+            margin-top: 10px;
+            &.admin {
+                background-image: url("/images/settings-admin-icon.png");
+            }
+            &.user {
+                background-image: url("/images/settings-user-icon.png");
+            }
+            &.active {
+                background-color: #fff;
+                border-radius: 10px;
+                color: $mainGreen;
+                .setting-option-option {
+                    background: url("/images/next-green.png") no-repeat center right 28px;
+                }
+            }
+            .setting-option-option {
+                height: 70px;
+                padding-left: 63px;
+                background: url("/images/next-gray.png") no-repeat center right 28px;
+            }
+        }
+        .setting-data {
+            background: #fff;
+            border-radius: 10px;
+            padding: 43px 50px;
+            .settings-data-title {
+                font-size: 24px;
+                color: #000022;
+            }
+            .settings-data-options {
+                padding-top: 15px;
+                .settings-data-option {
+                    border-top: 1px solid #EDEDED;
+                    padding: 15px 0;
+                    &:first-child {
+                        border-top: 0;
+                    }
+                    .settings-data-option-title {
+                        font-size: 20px;
+                        color: #000022;
+                    }
+                    .settings-data-option-description {
+                        font-size: 18px;
+                        color: rgba(0, 0, 34, 0.5);
+                    }
+                    .settings-data-option-more {
+                        width: 27px;
+                        height: 27px;
+                        border-radius: 50%;
+                        border: 1px solid $mainGreen;
+                        background: url("/images/chevron-down.png") no-repeat center center;
+                    }
+                }
+            }
+        }
+    }
+}

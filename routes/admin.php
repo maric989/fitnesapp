@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\Admin\CoachController;
 use App\Http\Controllers\Admin\LessonController;
 use App\Http\Controllers\Admin\ProgramController;
+use App\Http\Controllers\Admin\SettingsController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\FilterController;
 use Illuminate\Support\Facades\Route;
@@ -57,8 +58,14 @@ Route::middleware(['isAdmin', 'auth'])->group(function () {
             });
         });
 
-        Route::prefix('banners')->group(function () {
-            Route::get('/edit', [BannerController::class, 'editBanners'])->name('admin.banners.edit');
+        Route::prefix('settings')->group(function () {
+            Route::get('/', [SettingsController::class, 'index'])->name('admin.settings.index');
+            Route::prefix('banners')->group(function () {
+                Route::get('/edit', [SettingsController::class, 'editBanners'])->name('admin.settings.banners.edit');
+            });
+            Route::prefix('filters')->group(function () {
+                Route::get('/edit', [SettingsController::class, 'editFilters'])->name('admin.settings.filters.edit');
+            });
         });
 
         Route::prefix('filters')->group(function () {

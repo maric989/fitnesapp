@@ -35,7 +35,7 @@
             <div class="menu-icon users-icon active-icon absolute"></div>
             <div class="text">Users</div>
         </a>
-        <a href="/admin" class="admin-left-menu-option flex v-align-center relative">
+        <a href="{{ route('admin.settings.index') }}" class="admin-left-menu-option flex v-align-center relative {{ Request::is('admin/settings') || Request::is('admin/settings/*') ? 'active' : '' }}">
             <div class="menu-icon settings-icon absolute"></div>
             <div class="menu-icon settings-icon active-icon absolute"></div>
             <div class="text">Settings</div>

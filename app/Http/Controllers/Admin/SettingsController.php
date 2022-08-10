@@ -5,8 +5,13 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Banner;
 
-class BannerController extends Controller
+class SettingsController extends Controller
 {
+    public function index()
+    {
+        return view('admin.settings.index');
+    }
+
     public function editBanners()
     {
         $banners = Banner::all();
@@ -15,8 +20,13 @@ class BannerController extends Controller
             $bannersData[$banner->type] = $banner->data;
         }
 
-        return view('admin.banners.edit')->with([
+        return view('admin.settings.banner-edit')->with([
             'banners' => $bannersData
         ]);
+    }
+
+    public function editFilters()
+    {
+        return view('admin.settings.filters-edit');
     }
 }
