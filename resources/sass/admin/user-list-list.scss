@@ -1,0 +1,22 @@
+.data-grid {
+    .body.table-row {
+        .table-cell {
+            border-bottom: 1px solid #F3F5FA;
+            padding: 20px 10px;
+            color: #1F1A1A;
+        }
+    }
+    .head {
+        .table-cell {
+            border-bottom: 1px solid #F3F5FA;
+            color: #9A9A9A;
+        }
+    }
+}
+
+.user-list-container {
+    background: #fff;
+    padding: 10px 30px 30px 30px;
+    border-radius: 5px;
+    margin-top: 15px;
+}
