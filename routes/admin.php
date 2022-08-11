@@ -62,6 +62,7 @@ Route::middleware(['isAdmin', 'auth'])->group(function () {
             Route::get('/', [SettingsController::class, 'index'])->name('admin.settings.index');
             Route::prefix('banners')->group(function () {
                 Route::get('/edit', [SettingsController::class, 'editBanners'])->name('admin.settings.banners.edit');
+                Route::post('/update', [SettingsController::class, 'updateBanners'])->name('admin.settings.banners.update');
             });
             Route::prefix('filters')->group(function () {
                 Route::get('/edit', [SettingsController::class, 'editFilters'])->name('admin.settings.filters.edit');
